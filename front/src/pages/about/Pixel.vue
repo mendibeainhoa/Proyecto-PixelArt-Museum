@@ -8,12 +8,12 @@
         mounted() {
             console.log('Pixel');
         },
-data(){
+        data(){
             return {
                 activeBackground: '#ffffff'
             }
         },
-methods: {
+        methods: {
             changeColor(){
                 if(this.activeBackground == this.coloring){
                     this.activeBackground = '#ffffff'
@@ -23,7 +23,7 @@ methods: {
                 
             }
         },
-props: [
+        props: [
          'coloring'
         ]
     }

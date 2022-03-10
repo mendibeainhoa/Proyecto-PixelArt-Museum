@@ -11,23 +11,24 @@
     </div>
 </template>
 <script>
-import Art from './Art.vue';
+import Art from '@/pages/about/Art.vue';
 import { Chrome } from 'vue-color'
 export default {
-data(){
-        return {
-            colors: []
+    name : 'Edit_pixel',
+    data(){
+            return {
+                colors: []
+            }
+        },
+    methods: {
+            changeColor(){
+                console.log('Change color');
+                this.coloring = this.colors.hex;
+            }
+        },
+    components: {
+            Art,
+            'chrome-picker': Chrome
         }
-    },
-methods: {
-        changeColor(){
-            console.log('Change color');
-            this.coloring = colors.hex;
-        }
-    },
-components: {
-        Art,
-        'chrome-picker': Chrome
     }
-}
 </script>

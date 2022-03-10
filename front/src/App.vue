@@ -1,12 +1,13 @@
 <template>
-<header><h1>Pixel Art Museum</h1>
-</header>
+  <header><h1>Pixel Art Museum</h1>
+    <router-link to="/">Home</router-link>
+  </header>
 </template>
 
 <script>
-import { useStorage } from "@vueuse/core";
 
-export default {
+
+/*export default {
   name: 'Header',
   data() {
     return {
@@ -14,7 +15,7 @@ export default {
     }
   },
 
-}
+}*/
 </script>
 
 <style>
