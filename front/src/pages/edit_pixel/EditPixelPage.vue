@@ -2,10 +2,10 @@
 <template>
   <h1>Edit Pixel</h1>
   <section>
-    <div v-bind:style="{ backgroundColor: canvas }">a</div>
-    <div v-bind:style="{ backgroundColor: canvas }">b</div>
+    <div v-bind:style="{ backgroundColor: canvas }">A</div>
+    <div v-bind:style="{ backgroundColor: canvas }">B</div>
   </section>
-  <input type="button" v-model="selectedColor" />
+  <input type="text" v-model="selectedColor" />
   <p>{{ selectedColor }}</p>
   <button @click="onColorChange">colorear</button>
 </template>
@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      canvas: ["red"],
+      canvas: [],
       selectedColor: "",
     };
   },
@@ -30,13 +30,14 @@ export default {
   // },
 };
 </script>
-<style>
+<style scoped >
 section {
   display: flex;
-  border: 1px solid black;
+  justify-content: center;
 }
 div {
-  align-content: center;
-  color: aliceblue;
+  color: black;
+  border: 1px solid black;
+  margin: 1em;
 }
 </style>
