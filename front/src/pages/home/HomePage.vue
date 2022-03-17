@@ -2,14 +2,13 @@
   <div class="home">
     <h1>Welcome home</h1>
   </div>
-
 </template>
 
 <script>
-
 export default {
-  name: 'Home',
+  name: "Home",
   data() {
-  }
-}
+    return {};
+  },
+};
 </script>

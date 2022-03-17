@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "@/pages/about/home/HomePage.vue";
-import Edit from "@/pages/about/edit_pixel/EditPixelPage.vue";
+import Home from "@/pages/home/HomePage.vue";
+import Edit from "@/pages/edit_pixel/EditPixelPage.vue";
 
 const routes = [
   {
