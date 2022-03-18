@@ -4,6 +4,7 @@
   <section>
     <div v-bind:style="{ backgroundColor: colors[0] }">A</div>
     <div v-bind:style="{ backgroundColor: colors[1] }">B</div>
+    <div v-bind:style="{ backgroundColor: colors[2] }">C</div>
   </section>
   <input type="text" v-model="index" />
   <input type="text" v-model="selectedColor" />
@@ -15,9 +16,8 @@
 export default {
   data() {
     return {
-      canvas: "#ff0000",
       selectedColor: "",
-      colors: { 0: "red", 1: "blue" },
+      colors: { 0: "red", 1: "blue", 2: "green" },
       index: 0,
     };
   },
