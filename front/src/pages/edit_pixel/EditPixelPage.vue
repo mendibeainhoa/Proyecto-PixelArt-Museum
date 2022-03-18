@@ -14,29 +14,25 @@
 export default {
   data() {
     return {
-      canvas: [],
+      canvas: "#ff0000",
       selectedColor: "",
     };
   },
-  // methods: {
-  //   onColorChange() {
-  //     // contador = 0;
-  //     // for ( in contador)
-  //     // contador += 1
-  //     // contador.push(cuadrito);
-
-  //     this.canvas = this.selectedColor;
-  //   },
-  // },
+  methods: {
+    onColorChange() {
+      this.canvas = this.selectedColor;
+    },
+  },
 };
 </script>
+
 <style scoped >
 section {
   display: flex;
   justify-content: center;
 }
 div {
-  color: black;
+  color: rgb(0, 0, 0);
   border: 1px solid black;
   margin: 1em;
 }
