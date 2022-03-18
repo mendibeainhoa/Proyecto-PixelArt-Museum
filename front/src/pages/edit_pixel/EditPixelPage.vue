@@ -9,6 +9,18 @@
   <input type="text" v-model="index" />
   <input type="text" v-model="selectedColor" />
   <p>{{ selectedColor }}</p>
+  <div id="Contenedor">
+    <h1><p>Grid Canvas</p></h1>
+    <div id="contenedorCanvas">
+      <canvas id="canvas1" width="600" height="580">
+        Tu navegador no soporta canvas
+      </canvas>
+    </div>
+    <div id="herramientas">
+      Color: <input type="color" id="color" value="#FF0000" /> Tamaño
+      <input type="range" id="sizeCuadros" value="20" min="5" max="100" />
+    </div>
+  </div>
   <button @click="onColorChange">colorear</button>
 </template>
 
@@ -40,3 +52,5 @@ div {
   margin: 1em;
 }
 </style>
+
+// https://tpec05.blogspot.com/2018/02/como-crear-una-cuadricula-de-dibujo-en.html
