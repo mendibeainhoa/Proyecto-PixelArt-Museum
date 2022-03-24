@@ -9,28 +9,32 @@
   <input class="position" type="text" v-model="index" />
   <section id="colorPicker">
     <input
+      type="button"
       class="canva"
       id="color-0"
-      v-model="selectedColor"
       v-bind:style="{ backgroundColor: selectedColor[0] }"
+      @click="onColorChange(0)"
     />
     <input
+      type="button"
       class="canva"
       id="color-1"
-      v-model="selectedColor"
       v-bind:style="{ backgroundColor: selectedColor[1] }"
+      @click="onColorChange(1)"
     />
     <input
+      type="button"
       class="canva"
       id="color-2"
-      v-model="selectedColor"
       v-bind:style="{ backgroundColor: selectedColor[2] }"
+      @click="onColorChange(2)"
     />
     <input
+      type="button"
       class="canva"
       id="color-3"
-      v-model="selectedColor"
       v-bind:style="{ backgroundColor: selectedColor[3] }"
+      @click="onColorChange(3)"
     />
     <input type="color" id="color-4" v-model="selectedColor" />
   </section>
@@ -51,20 +55,15 @@
 export default {
   data() {
     return {
-      selectedColor: {
-        0: "red",
-        1: "blue",
-        2: "green",
-        3: "yellow",
-        4: "purple",
-      },
-      colors: { 0: "red", 1: "blue", 2: "green" },
+      selectedColor: ["red", "blue", "green", "yellow"],
+      colors: { 0: "", 1: "", 2: "" },
       index: 0,
     };
   },
   methods: {
-    onColorChange() {
-      this.colors[this.index] = this.selectedColor;
+    onColorChange(position) {
+      this.colors[this.index] = this.selectedColor[position];
+      console.log(this.selectedColor[position]);
     },
   },
 };
