@@ -100,3 +100,4 @@ div {
 </style>
 
 // https://codepen.io/JesusTepec/pen/pjzpOE
+// https://www.w3schools.com/html/html5_canvas.asp
