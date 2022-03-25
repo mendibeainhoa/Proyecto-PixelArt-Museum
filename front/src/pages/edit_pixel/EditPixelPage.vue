@@ -5,9 +5,56 @@
     <div id="contenedorCanvas">
       <canvas id="canvas1" width="400" height="300"> </canvas>
       <section>
-        <div class="canva" v-bind:style="{ backgroundColor: colors[0] }"></div>
-        <div class="canva" v-bind:style="{ backgroundColor: colors[1] }"></div>
-        <div class="canva" v-bind:style="{ backgroundColor: colors[2] }"></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[0] }"
+          @click="onPixelClicked(0)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[1] }"
+          @click="onPixelClicked(1)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[2] }"
+          @click="onPixelClicked(2)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[3] }"
+          @click="onPixelClicked(3)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[4] }"
+          @click="onPixelClicked(4)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[5] }"
+          @click="onPixelClicked(5)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[6] }"
+          @click="onPixelClicked(6)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[7] }"
+          @click="onPixelClicked(7)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[8] }"
+          @click="onPixelClicked(8)"
+        ></div>
+        <div
+          class="canva"
+          v-bind:style="{ backgroundColor: colors[9] }"
+          @click="onPixelClicked(9)"
+        ></div>
       </section>
     </div>
     <!-- <input type="range" id="sizeCuadros" value="20" min="5" max="100" /> -->
@@ -56,7 +103,7 @@ export default {
   data() {
     return {
       selectedColor: ["red", "blue", "green", "yellow"],
-      colors: { 0: "", 1: "", 2: "" },
+      colors: ["", "", "", "", "", "", "", "", ""],
       index: 0,
     };
   },
@@ -67,6 +114,9 @@ export default {
     },
     onPickerButton() {
       this.colors[this.index] = this.selectedColor;
+    },
+    onPixelClicked(position) {
+      this.index = position;
     },
   },
 };
