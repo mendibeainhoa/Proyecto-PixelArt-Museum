@@ -1,54 +1,54 @@
 
 <template>
-  <h1>Edit Pixel</h1>
-  <section>
-    <div class="canva" v-bind:style="{ backgroundColor: colors[0] }"></div>
-    <div class="canva" v-bind:style="{ backgroundColor: colors[1] }"></div>
-    <div class="canva" v-bind:style="{ backgroundColor: colors[2] }"></div>
-  </section>
-  <input class="position" type="text" v-model="index" />
-  <section id="colorPicker">
-    <input
-      type="button"
-      class="canva"
-      id="color-0"
-      v-bind:style="{ backgroundColor: selectedColor[0] }"
-      @click="onColorChange(0)"
-    />
-    <input
-      type="button"
-      class="canva"
-      id="color-1"
-      v-bind:style="{ backgroundColor: selectedColor[1] }"
-      @click="onColorChange(1)"
-    />
-    <input
-      type="button"
-      class="canva"
-      id="color-2"
-      v-bind:style="{ backgroundColor: selectedColor[2] }"
-      @click="onColorChange(2)"
-    />
-    <input
-      type="button"
-      class="canva"
-      id="color-3"
-      v-bind:style="{ backgroundColor: selectedColor[3] }"
-      @click="onColorChange(3)"
-    />
-    <input type="color" id="color-4" v-model="selectedColor" />
-  </section>
-  <p>{{ selectedColor }}</p>
-  <button class="checker" @click="onColorChange">colorear</button>
-  <!-- <div id="Contenedor">
+  <div id="Contenedor">
     <h1><p>Grid Canvas</p></h1>
     <div id="contenedorCanvas">
-      <canvas id="canvas1" width="600" height="580"> </canvas>
+      <canvas id="canvas1" width="400" height="300"> </canvas>
+      <section>
+        <div class="canva" v-bind:style="{ backgroundColor: colors[0] }"></div>
+        <div class="canva" v-bind:style="{ backgroundColor: colors[1] }"></div>
+        <div class="canva" v-bind:style="{ backgroundColor: colors[2] }"></div>
+      </section>
     </div>
-    <div id="herramientas">
-      <input type="range" id="sizeCuadros" value="20" min="5" max="100" />
-    </div>
-  </div> -->
+    <!-- <input type="range" id="sizeCuadros" value="20" min="5" max="100" /> -->
+    <section id="colorPicker">
+      <input
+        type="button"
+        class="canva"
+        id="color-0"
+        v-bind:style="{ backgroundColor: selectedColor[0] }"
+        @click="onColorChange(0)"
+      />
+      <input
+        type="button"
+        class="canva"
+        id="color-1"
+        v-bind:style="{ backgroundColor: selectedColor[1] }"
+        @click="onColorChange(1)"
+      />
+      <input
+        type="button"
+        class="canva"
+        id="color-2"
+        v-bind:style="{ backgroundColor: selectedColor[2] }"
+        @click="onColorChange(2)"
+      />
+      <input
+        type="button"
+        class="canva"
+        id="color-3"
+        v-bind:style="{ backgroundColor: selectedColor[3] }"
+        @click="onColorChange(3)"
+      />
+      <input type="color" id="color-4" v-model="selectedColor" />
+    </section>
+    <p>{{ selectedColor }}</p>
+    <section>
+      <input class="position" type="text" v-model="index" />
+
+      <button class="checker" @click="onPickerButton">colorear</button>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -64,6 +64,9 @@ export default {
     onColorChange(position) {
       this.colors[this.index] = this.selectedColor[position];
       console.log(this.selectedColor[position]);
+    },
+    onPickerButton() {
+      this.colors[this.index] = this.selectedColor;
     },
   },
 };
@@ -96,4 +99,4 @@ div {
 }
 </style>
 
-// https://tpec05.blogspot.com/2018/02/como-crear-una-cuadricula-de-dibujo-en.html
+// https://codepen.io/JesusTepec/pen/pjzpOE
