@@ -87,14 +87,17 @@
         v-bind:style="{ backgroundColor: selectedColor[3] }"
         @click="onColorChange(3)"
       />
-      <input type="color" id="color-4" v-model="selectedColor" />
+      <input
+        type="color"
+        id="color-4"
+        v-model="selectedColor[4]"
+        @click="onPickerButton(4)"
+      />
     </section>
     <p>{{ selectedColor }}</p>
-    <section>
-      <input class="position" type="text" v-model="index" />
-
-      <button class="checker" @click="onPickerButton">colorear</button>
-    </section>
+    <!-- <section>
+      <button class="checker" @click="onPickerButton(4)">colorear</button>
+    </section> -->
   </div>
 </template>
 
@@ -112,8 +115,9 @@ export default {
       this.colors[this.index] = this.selectedColor[position];
       console.log(this.selectedColor[position]);
     },
-    onPickerButton() {
-      this.colors[this.index] = this.selectedColor;
+    onPickerButton(position) {
+      this.colors[this.index] = this.selectedColor[position];
+      console.log(this.selectedColor[position]);
     },
     onPixelClicked(position) {
       this.index = position;
