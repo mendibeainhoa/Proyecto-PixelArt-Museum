@@ -180,12 +180,18 @@
       @click="onPickerButton(4)"
     />
   </section>
-  <input
+  <button
     type="button"
     id="borrador"
     @click="onResetColor()"
     value="Borrar color"
-  />
+  >
+    <img
+      src="https://s3.amazonaws.com/iconbros/icons/icon_svgs/000/008/875/original/eraser.svg?1592504986"
+      height="35"
+      width="35"
+    />
+  </button>
   <p>{{ selectedColor }}</p>
 </template>
 
@@ -258,8 +264,8 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 35%;
-  width: 30%;
+  margin-left: 20rem;
+  width: 17rem;
   border: solid 1px black;
 }
 div {
@@ -280,6 +286,9 @@ input {
   height: 30px;
   border: 1px solid black;
 }
+/* .module {
+  cursor: url("path-to-image.png"), auto;
+} */
 </style>
 
 // https://codepen.io/JesusTepec/pen/pjzpOE
