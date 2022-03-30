@@ -240,7 +240,7 @@ export default {
       this.index = position;
     },
     onResetColor() {
-      this.colors = this.borrador;
+      this.colors[this.index] = this.borrador;
     },
   },
 };
