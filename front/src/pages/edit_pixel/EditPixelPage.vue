@@ -193,6 +193,8 @@
     />
   </button>
   <p>{{ selectedColor }}</p>
+  <input type="button" value="Save" />
+  <input type="button" value="Load" />
 </template>
 
 <script>
@@ -231,9 +233,20 @@ export default {
       ],
       index: 0,
       borrador: "",
+      sprites: [],
     };
   },
+  mounted() {
+    this.loadData();
+  },
+
   methods: {
+    async loadData() {
+      const response = await fetch("http://localhost:5000/api/sprites");
+      this.sprites = await response.json();
+      console.log(this.loadData);
+    },
+
     onColorChange(position) {
       this.colors[this.index] = this.selectedColor[position];
       console.log(this.selectedColor[position]);
