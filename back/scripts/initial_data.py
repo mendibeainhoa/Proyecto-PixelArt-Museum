@@ -1,16 +1,12 @@
-def main():
-    import sys
+import sys
 
-    sys.path.insert(0, "")
+sys.path.insert(0, "")
+from src.domain.sprites import SpritesRepository, Sprites
 
-    from src.domain.info import Info, InfoRepository
-
-    database_path = "data/database.db"
-
-    info_repository = InfoRepository(database_path)
-
-    info_repository.save(Info(app_name="f5-seed-app"))
+database_path = "data/database.db"
 
 
-if __name__ == '__main__':
-    main()
+sprites_repository = SpritesRepository(database_path)
+
+
+sprites_repository.save(Sprites(""))

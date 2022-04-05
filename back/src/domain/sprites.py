@@ -1,4 +1,5 @@
 import sqlite3
+from unittest import result
 
 
 class Sprites:
@@ -34,6 +35,7 @@ class SpritesRepository:
         return conn
 
     def init_tables(self):
+
         sql = """
         CREATE TABLE if not exists sprites(
             "id" VARCHAR,
@@ -44,6 +46,25 @@ class SpritesRepository:
             "blue" INTERGER,
             "alpha" REAL
         )"""
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        conn.commit()
+
+    def get_sprites(self):
+        sql = """select * from sprites"""
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+
+        data = cursor.fetchall()
+
+        result = []
+        for item in data:
+            sprites = Sprites(**item)
+            result.append(sprites)
+
+        return result
 
     def save(self, sprites):
         sql = """INSERT INTO sprites(id, x_position, y_position, red, green, blue, alpha) values
@@ -57,9 +78,10 @@ class SpritesRepository:
                 "x_position": sprites.x_position,
                 "y_position": sprites.y_position,
                 "red": sprites.red,
-                "green": self.green,
-                "blue": self.blue,
-                "alpha": self.alpha,
+                "green": sprites.green,
+                "blue": sprites.blue,
+                "alpha": sprites.alpha,
             },
         )
+
         conn.commit()

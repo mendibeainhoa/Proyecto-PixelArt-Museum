@@ -17,4 +17,9 @@ def create_app(repositories):
         info = repositories["info"].get_info()
         return object_to_json(info)
 
+    @app.route("/api/sprites", methods=["GET"])
+    def sprites_get():
+        sprites = repositories["sprites"].get_sprites()
+        return object_to_json(sprites)
+
     return app
