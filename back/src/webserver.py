@@ -1,7 +1,10 @@
-from flask import Flask
+from crypt import methods
+from flask import Flask, request
 from flask_cors import CORS
 
+
 from src.lib.utils import object_to_json
+from src.domain.sprites import Sprites
 
 
 def create_app(repositories):
@@ -21,5 +24,13 @@ def create_app(repositories):
     def sprites_get():
         sprites = repositories["sprites"].get_sprites()
         return object_to_json(sprites)
+
+    @app.route("/api/sprites", methods=["POST"])
+    def sprites_post():
+        body = request.json
+        sprites = Sprites(**body)
+        repositories["sprites"].save(sprites)
+
+        return ""
 
     return app
