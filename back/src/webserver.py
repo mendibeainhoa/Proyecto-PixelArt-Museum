@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 
 from src.lib.utils import object_to_json
-from domain.canva import Canva
+from src.domain.canva import Canva
 
 
 def create_app(repositories):

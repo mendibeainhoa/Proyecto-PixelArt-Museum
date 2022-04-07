@@ -1,7 +1,6 @@
-from turtle import width
 from src.lib.utils import temp_file
 from src.webserver import create_app
-from domain.canva import CanvasRepository, Pixels, Canva
+from src.domain.canva import CanvasRepository, Pixels, Canva
 
 
 def test_should_return_sprites_in_front():

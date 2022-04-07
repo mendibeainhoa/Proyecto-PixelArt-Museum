@@ -1,7 +1,7 @@
 import sys
 
 sys.path.insert(0, "")
-from domain.canva import CanvasRepositories, Canva, Pixels
+from src.domain.canva import CanvasRepositories, Canva, Pixels
 
 database_path = "data/database.db"
 

@@ -3,12 +3,12 @@ from src.lib.utils import temp_file
 
 from src.webserver import create_app
 
-from src.domain.canva import CanvasRepositories
+from src.domain.canva import CanvasRepository
 
 
 def test_server_should_save_canvas():
     database = temp_file()
-    canvas_repository = CanvasRepositories(database)
+    canvas_repository = CanvasRepository(database)
     app = create_app(repositories={"canvas": canvas_repository})
 
     client = app.test_client()
