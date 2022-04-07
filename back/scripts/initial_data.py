@@ -1,14 +1,24 @@
 import sys
 
 sys.path.insert(0, "")
-from src.domain.sprites import SpritesRepository, Sprites
+from domain.canva import CanvasRepositories, Canva, Pixels
 
 database_path = "data/database.db"
 
-color_1 = Sprites(
-    id="sprite-1", x_position=1, y_position=1, red=1, green=1, blue=1, alpha=0.10
+color_1 = Pixels(
+    red=1,
+    green=1,
+    blue=1,
+)
+color_2 = Pixels(
+    red=1,
+    green=2,
+    blue=3,
+)
+canva = Canva(
+    id="canva-1", name="canva-test", width=2, height=1, pixels=[color_1, color_2]
 )
 
-sprites_repository = SpritesRepository(database_path)
-sprites_repository.save(color_1)
+canvas_repository = CanvasRepositories(database_path)
+canvas_repository.save(canva)
 print("Base de datos inicializada en " + database_path)

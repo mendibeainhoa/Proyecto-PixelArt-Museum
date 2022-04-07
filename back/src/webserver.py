@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 
 from src.lib.utils import object_to_json
-from src.domain.sprites import Sprites
+from domain.canva import Canva
 
 
 def create_app(repositories):
@@ -20,16 +20,16 @@ def create_app(repositories):
         info = repositories["info"].get_info()
         return object_to_json(info)
 
-    @app.route("/api/sprites", methods=["GET"])
-    def sprites_get():
-        sprites = repositories["sprites"].get_sprites()
-        return object_to_json(sprites)
+    @app.route("/api/canva", methods=["GET"])
+    def canva_get():
+        canva = repositories["canva"].get_canva()
+        return object_to_json(canva)
 
-    @app.route("/api/sprites", methods=["POST"])
-    def sprites_post():
+    @app.route("/api/canva", methods=["POST"])
+    def canva_post():
         body = request.json
-        sprites = Sprites(**body)
-        repositories["sprites"].save(sprites)
+        canva = Canva(**body)
+        repositories["sprites"].save(canva)
 
         return ""
 
