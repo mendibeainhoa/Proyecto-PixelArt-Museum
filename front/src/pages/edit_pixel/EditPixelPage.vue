@@ -203,33 +203,29 @@ export default {
     return {
       selectedColor: ["red", "blue", "green", "yellow"],
       colors: [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
+        "white",
       ],
       index: 0,
       borrador: "",
@@ -277,13 +273,17 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 20rem;
+  margin-left: 48em;
+  margin-right: 48em;
   width: 17rem;
   border: solid 1px black;
 }
 div {
-  margin: 0.1em;
-  justify-content: center;
+  position: relative;
+  width: 99px;
+  height: 97px;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 #colorPicker {
@@ -299,9 +299,6 @@ input {
   height: 30px;
   border: 1px solid black;
 }
-/* .module {
-  cursor: url("path-to-image.png"), auto;
-} */
 </style>
 
 // https://codepen.io/JesusTepec/pen/pjzpOE
