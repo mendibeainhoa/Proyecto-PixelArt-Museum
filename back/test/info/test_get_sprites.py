@@ -3,7 +3,7 @@ from src.webserver import create_app
 from src.domain.sprites import SpritesRepository, Sprites
 
 
-def test_should_return_sprites_in_database():
+def test_should_return_sprites_in_front():
     database = temp_file()
     sprites_repository = SpritesRepository(database)
     app = create_app(repositories={"sprites": sprites_repository})

@@ -24,30 +24,30 @@ def test_server_should_save_sprites():
             "alpha": 0.10,
         }
     ]
-    sprites_repository.save(
-        Sprites(
-            id="sprite-1",
-            x_position=1,
-            y_position=1,
-            red=1,
-            green=1,
-            blue=1,
-            alpha=0.10,
-        )
-    )
+    sprites_repository.save(sprites)
 
-    response = client.post("api/sprites", json=sprites)
+    response = client.post("api/sprites/sprite-1", json=sprites)
     assert response.status_code == 200
 
-    response_get = client.get("api/sprites")
-    assert response_get.json == [
-        {
-            "id": "sprite-1",
-            "x_position": 1,
-            "y_position": 1,
-            "red": 1,
-            "green": 1,
-            "blue": 1,
-            "alpha": 0.10,
-        }
-    ]
+    response_get = client.get("api/sprites/sprite-1")
+    sprites_list = response_get.json
+    assert len(sprites_list) == 49
+    assert sprites_list[0]["id"] == "sprite-1"
+    assert sprites_list[0]["x_position"] == 1
+    assert sprites_list[0]["y_position"] == 1
+    assert sprites_list[0]["red"] == 1
+    assert sprites_list[0]["green"] == 1
+    assert sprites_list[0]["blue"] == 1
+    assert sprites_list[0]["alpha"] == 0.10
+
+    # assert response_get.json == [
+    #     {
+    #         "id": "sprite-1",
+    #         "x_position": 1,
+    #         "y_position": 1,
+    #         "red": 1,
+    #         "green": 1,
+    #         "blue": 1,
+    #         "alpha": 0.10,
+    #     }
+    # ]

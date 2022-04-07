@@ -38,7 +38,7 @@ class SpritesRepository:
 
         sql = """
         CREATE TABLE if not exists sprites(
-            "id" VARCHAR,
+            "id" VARCHAR PRIMARY KEY,
             "x_position" INTERGER,
             "y_position" INTERGER,
             "red" INTERGER,
