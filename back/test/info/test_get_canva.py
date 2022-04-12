@@ -20,7 +20,11 @@ def test_should_return_sprites_in_front():
         blue=3,
     )
     canva = Canva(
-        id="canva-1", name="canva-test", width=2, height=1, pixels=[color_1, color_2]
+        id="canva-1",
+        name="canva-test",
+        width=8,
+        height=4,
+        pixels='[ "yellow", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "white", "#b34747", "#793434", "white", "white", "white", "white", "white", "white", "white", "white", "white" ]',
     )
 
     canvas_repository.save(canva)
