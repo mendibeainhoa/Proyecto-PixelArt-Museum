@@ -8,7 +8,11 @@ class Canva:
         self.name = name
         self.width = width
         self.height = height
-        self.pixels = self.pixels
+
+        if pixels is not None:
+            self.pixels = pixels
+        else:
+            self.pixels = []
 
     def to_dict(self):
         return {
@@ -38,7 +42,11 @@ class CanvasRepository:
             "name" VARCHAR,
             "width" INTERGER,
             "height" INTERGER,
-            "pixels" INTERGER,
+           );
+
+           CREATE TABLE if not exists pixels(
+               id VARCHAR PRIMARY KEY
+           )
         )"""
         conn = self.create_conn()
         cursor = conn.cursor()

@@ -195,6 +195,7 @@
   <p>{{ selectedColor }}</p>
   <input type="button" value="Save" />
   <input type="button" value="Load" />
+  {{ $data }}
 </template>
 
 <script>
