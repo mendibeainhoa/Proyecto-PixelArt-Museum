@@ -1,6 +1,6 @@
 from src.lib.utils import temp_file
 from src.webserver import create_app
-from src.domain.canva import CanvasRepository, Pixels, Canva
+from src.domain.canva import CanvasRepository, Canva
 
 
 def test_should_return_sprites_in_front():
@@ -9,16 +9,6 @@ def test_should_return_sprites_in_front():
     app = create_app(repositories={"canvas": canvas_repository})
     client = app.test_client()
 
-    color_1 = Pixels(
-        red=1,
-        green=1,
-        blue=1,
-    )
-    color_2 = Pixels(
-        red=1,
-        green=2,
-        blue=3,
-    )
     canva = Canva(
         id="canva-1",
         name="canva-test",
@@ -36,15 +26,28 @@ def test_should_return_sprites_in_front():
         "width": 2,
         "height": 1,
         "pixels": [
-            {
-                "red": 1,
-                "green": 1,
-                "blue": 1,
-            },
-            {
-                "red": 1,
-                "green": 2,
-                "blue": 3,
-            },
+            "yellow",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "#b34747",
+            "#793434",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
         ],
     }

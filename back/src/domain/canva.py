@@ -8,11 +8,12 @@ class Canva:
         self.name = name
         self.width = width
         self.height = height
+        self.pixels = pixels
 
-        if pixels is not None:
-            self.pixels = pixels
-        else:
-            self.pixels = []
+        # if pixels is not None:
+        #     self.pixels = pixels
+        # else:
+        #     self.pixels = []
 
     def to_dict(self):
         return {
@@ -37,24 +38,19 @@ class CanvasRepository:
     def init_tables(self):
 
         sql = """
-        CREATE TABLE if not exists canvas(
+        CREATE TABLE if not exists canva(
             "id" VARCHAR PRIMARY KEY,
             "name" VARCHAR,
             "width" INTERGER,
             "height" INTERGER,
-           );
-
-           CREATE TABLE if not exists pixels(
-               id VARCHAR PRIMARY KEY
-           )
-        )"""
+            "pixels" VARCHAR)"""
         conn = self.create_conn()
         cursor = conn.cursor()
         cursor.execute(sql)
         conn.commit()
 
     def get_canva(self):
-        sql = """select * from canvas"""
+        sql = """select * from canva"""
         conn = self.create_conn()
         cursor = conn.cursor()
         cursor.execute(sql)
