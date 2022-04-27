@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -20,7 +19,7 @@ def create_app(repositories):
         info = repositories["info"].get_info()
         return object_to_json(info)
 
-    @app.route("/api/canva", methods=["GET"])
+    @app.route("/api/canva/<id>", methods=["GET"])
     def canva_get():
         canva = repositories["canva"].get_canva()
         return object_to_json(canva)

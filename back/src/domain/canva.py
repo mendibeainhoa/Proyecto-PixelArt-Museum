@@ -1,4 +1,5 @@
 import sqlite3
+import json
 from unittest import result
 
 
@@ -55,14 +56,17 @@ class CanvasRepository:
         cursor = conn.cursor()
         cursor.execute(sql)
 
-        data = cursor.fetchall()
+        data = cursor.fetchone()
 
-        result = []
-        for item in data:
-            canva = Canva(**item)
-            result.append(canva)
+        canva = Canva( 
+                id = data["id"],
+                name = data ["name"],
+                width = data["width"],
+                height = data["height"],
+                pixels = json.loads(data["pixels"]))
+       
 
-        return result
+        return canva
 
     def save(self, canva):
         sql = """INSERT INTO canva(id, name, width, height, pixels) values
@@ -76,7 +80,7 @@ class CanvasRepository:
                 "name": canva.name,
                 "width": canva.width,
                 "height": canva.height,
-                "pixels": canva.pixels,
+                "pixels": json.dumps(canva.pixels) ,
             },
         )
 
