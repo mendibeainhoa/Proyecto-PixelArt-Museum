@@ -6,14 +6,14 @@ from src.webserver import create_app
 from src.domain.canva import CanvasRepository
 
 
-def test_server_should_save_canvas():
+def test_server_should_save_sprites():
     database = temp_file()
     canvas_repository = CanvasRepository(database)
-    app = create_app(repositories={"canvas": canvas_repository})
+    app = create_app(repositories={"canva": canvas_repository})
 
     client = app.test_client()
 
-    canva = {
+    body = {
         "id": "canva-1",
         "name": "canva-test",
         "width": 2,
@@ -44,9 +44,8 @@ def test_server_should_save_canvas():
             "white",
         ],
     }
-    canvas_repository.save(canva)
 
-    response = client.post("api/canvas/sprite-1", json=canva)
+    response = client.post("api/canvas/sprite-1", json=body)
     assert response.status_code == 200
 
     response_get = client.get("api/canva/canva-1")

@@ -50,25 +50,26 @@ class CanvasRepository:
         cursor.execute(sql)
         conn.commit()
 
-    def get_canva(self):
-        sql = """select * from canva"""
+    def get_canva_by_id(self, id):
+        sql = """SELECT * FROM canva WHERE id=:id"""
         conn = self.create_conn()
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, {"id": id})
 
         data = cursor.fetchone()
 
-        canva = Canva( 
-                id = data["id"],
-                name = data ["name"],
-                width = data["width"],
-                height = data["height"],
-                pixels = json.loads(data["pixels"]))
-       
+        canva = Canva(
+            id=data["id"],
+            name=data["name"],
+            width=data["width"],
+            height=data["height"],
+            pixels=json.loads(data["pixels"]),
+        )
 
         return canva
 
     def save(self, canva):
+        print(canva.to_dict())
         sql = """INSERT INTO canva(id, name, width, height, pixels) values
         (:id, :name, :width, :height, :pixels)"""
         conn = self.create_conn()
@@ -80,7 +81,7 @@ class CanvasRepository:
                 "name": canva.name,
                 "width": canva.width,
                 "height": canva.height,
-                "pixels": json.dumps(canva.pixels) ,
+                "pixels": json.dumps(canva.pixels),
             },
         )
 
