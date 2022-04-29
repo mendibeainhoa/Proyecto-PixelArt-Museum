@@ -142,6 +142,26 @@
       v-bind:style="{ backgroundColor: colors[27] }"
       @click="onPixelClicked(27)"
     ></div>
+    <div
+      class="canva"
+      v-bind:style="{ backgroundColor: colors[28] }"
+      @click="onPixelClicked(28)"
+    ></div>
+    <div
+      class="canva"
+      v-bind:style="{ backgroundColor: colors[29] }"
+      @click="onPixelClicked(29)"
+    ></div>
+    <div
+      class="canva"
+      v-bind:style="{ backgroundColor: colors[30] }"
+      @click="onPixelClicked(30)"
+    ></div>
+    <div
+      class="canva"
+      v-bind:style="{ backgroundColor: colors[31] }"
+      @click="onPixelClicked(31)"
+    ></div>
   </section>
 
   <section id="colorPicker">
@@ -192,13 +212,17 @@
       width="35"
     />
   </button>
-  <p>{{ selectedColor }}</p>
-  <input type="button" value="Save" />
-  <input type="button" value="Load" />
+  <br />
+  <!-- <p>{{ selectedColor }}</p> -->
+  <input class="save-button" type="button" value="Save" />
+  <router-link :to="`/canva/${sprite.id}`"> Load </router-link>
+  <input class="load-button" type="button" value="Load" />
+  <br />
   {{ $data }}
 </template>
 
 <script>
+import config from "/config.js";
 export default {
   data() {
     return {
@@ -227,10 +251,14 @@ export default {
         "white",
         "white",
         "white",
+        "white",
+        "white",
+        "white",
+        "white",
       ],
       index: 0,
       borrador: "",
-      sprites: [],
+      sprite: {},
     };
   },
   mounted() {
@@ -239,9 +267,9 @@ export default {
 
   methods: {
     async loadData() {
-      const response = await fetch("http://localhost:5000/api/sprites");
-      this.sprites = await response.json();
-      console.log(this.loadData);
+      let canvaId = this.$route.params.id;
+      const response = await fetch(`${config.API_PATH}/canva/${canvaId}`);
+      this.sprite = await response.json();
     },
 
     onColorChange(position) {
@@ -263,28 +291,24 @@ export default {
 </script>
 
 <style scoped >
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
   margin: 0;
   padding: 0;
+  font-family: "Press Start 2P", cursive;
 }
 h1 {
   margin: 1em;
+  font-size: 20px;
 }
 .pixel-canva {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 48em;
-  margin-right: 48em;
+  margin-left: 40%;
+
   width: 17rem;
   border: solid 1px black;
-}
-div {
-  position: relative;
-  width: 99px;
-  height: 97px;
-
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 #colorPicker {
@@ -299,6 +323,14 @@ input {
   width: 30px;
   height: 30px;
   border: 1px solid black;
+}
+.load-button {
+  font-size: 10px;
+  padding: 0.2em 1em;
+}
+.save-button {
+  font-size: 10px;
+  padding: 0.2em 1em;
 }
 </style>
 
