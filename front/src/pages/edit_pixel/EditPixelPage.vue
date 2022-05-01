@@ -200,6 +200,10 @@
       @click="onPickerButton(4)"
     />
   </section>
+  <ul class="canva-info">
+    <li>Title: {{canva.name}}</li>
+    <li>Width and height: {{canva.width}} x {{canva.height}}</li>
+  </ul>
   <button
     type="button"
     id="borrador"
@@ -215,14 +219,14 @@
   <br />
   <!-- <p>{{ selectedColor }}</p> -->
   <input class="save-button" type="button" value="Save" />
-  <router-link :to="`/canva/${sprite.id}`"> Load </router-link>
-  <input class="load-button" type="button" value="Load" />
+  <router-link to="`/canva/{canva.id}/update`">
+  <button> Load </button></router-link>
   <br />
   {{ $data }}
 </template>
 
 <script>
-import config from "/config.js";
+import { canva_get_by_id } from "@/services/api.js";
 export default {
   data() {
     return {
@@ -258,7 +262,7 @@ export default {
       ],
       index: 0,
       borrador: "",
-      sprite: {},
+      canva: {},
     };
   },
   mounted() {
@@ -268,8 +272,7 @@ export default {
   methods: {
     async loadData() {
       let canvaId = this.$route.params.id;
-      const response = await fetch(`${config.API_PATH}/canva/${canvaId}`);
-      this.sprite = await response.json();
+      this.canva = await canva_get_by_id(spriteId)
     },
 
     onColorChange(position) {
