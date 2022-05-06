@@ -21,7 +21,7 @@ def create_app(repositories):
 
     @app.route("/api/canva/<id>", methods=["GET"])
     def canva_get_by_id(id):
-        print(repositories)
+
         canva = repositories["canva"].get_canva_by_id(id)
         return object_to_json(canva)
 

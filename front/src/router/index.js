@@ -9,8 +9,8 @@ const routes = [
     component: Home,
   },
   {
-    path: "/edit_pixel",
-    name: "Edit_pixel",
+    path: "/edit_pixel/:id",
+    name: "Edit_pixel_id",
     component: Edit,
   },
 ];

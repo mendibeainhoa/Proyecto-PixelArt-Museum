@@ -55,7 +55,7 @@ class CanvasRepository:
         conn = self.create_conn()
         cursor = conn.cursor()
         cursor.execute(sql, {"id": id})
-
+        print(id)
         data = cursor.fetchone()
 
         canva = Canva(

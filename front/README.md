@@ -7,6 +7,7 @@ npm install
 ```
 
 npm install @vueuse/core
+
 ```
 
 ### Ejecutar servidor de desarrollo
@@ -16,4 +17,11 @@ npm install @vueuse/core
 npm run serve
 
 ```
+### Instalar UUID para ids
+```
 
+npm install uuid
+
+```
+
+```
