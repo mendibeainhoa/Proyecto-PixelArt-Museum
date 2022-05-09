@@ -218,14 +218,14 @@
     />
   </button>
   <br />
-  <!-- <p>{{ selectedColor }}</p> -->
-  <button @click="onLoadSprite">Load</button>
+  <button @click="onSaveCanva">Save</button>
   <br />
   {{ $data }}
 </template>
 
 <script>
 import { get_canva_by_id } from "@/services/api.js";
+import { canva_post } from "@/services/api.js";
 export default {
   data() {
     return {
@@ -277,6 +277,10 @@ export default {
         this.canva = await get_canva_by_id(canvaId);
         console.log(this.canva);
       }
+    },
+    async onSaveCanva() {
+      let canva = this.$route.params;
+      this.canva = await canva_post(canva);
     },
 
     onColorChange(position) {

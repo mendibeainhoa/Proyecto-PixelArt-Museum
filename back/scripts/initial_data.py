@@ -9,8 +9,8 @@ database_path = "data/database.db"
 canva = Canva(
     id="canva-1",
     name="canva-test",
-    width=2,
-    height=1,
+    width=8,
+    height=4,
     pixels=[
         "yellow",
         "white",
