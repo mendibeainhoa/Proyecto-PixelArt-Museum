@@ -3,7 +3,7 @@ from src.webserver import create_app
 from src.domain.canva import CanvasRepository, Canva
 
 
-def test_should_return_sprites_in_front():
+def test_should_return_all_list_of_sprites_in_front():
     database = temp_file()
     canvas_repository = CanvasRepository(database)
     app = create_app(repositories={"canva": canvas_repository})
@@ -40,20 +40,16 @@ def test_should_return_sprites_in_front():
             "white",
         ],
     )
-
-    canvas_repository.save(canva)
-
-    response = client.get("/api/canva/canva-1")
-    assert response.json == {
-        "id": "canva-1",
-        "name": "canva-test",
-        "width": 8,
-        "height": 4,
-        "pixels": [
+    canva_2 = Canva(
+        id="canva-2",
+        name="canva-test-2",
+        width=8,
+        height=4,
+        pixels=[
             "yellow",
-            "white",
-            "white",
-            "white",
+            "red",
+            "red",
+            "blue",
             "white",
             "white",
             "white",
@@ -74,4 +70,73 @@ def test_should_return_sprites_in_front():
             "white",
             "white",
         ],
-    }
+    )
+
+    canvas_repository.save(canva)
+    canvas_repository.save(canva_2)
+
+    response = client.get("/api/load_canva")
+    assert response.json == [
+        {
+            "id": "canva-1",
+            "name": "canva-test",
+            "width": 8,
+            "height": 4,
+            "pixels": [
+                "yellow",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "#b34747",
+                "#793434",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+            ],
+        },
+        {
+            "id": "canva-2",
+            "name": "canva-test-2",
+            "width": 8,
+            "height": 4,
+            "pixels": [
+                "yellow",
+                "red",
+                "red",
+                "blue",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "#b34747",
+                "#793434",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+                "white",
+            ],
+        },
+    ]

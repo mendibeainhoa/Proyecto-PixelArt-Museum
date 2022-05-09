@@ -14,10 +14,10 @@ def create_app(repositories):
     def hello_world():
         return "...magic!"
 
-    @app.route("/api/info", methods=["GET"])
-    def info_get():
-        info = repositories["info"].get_info()
-        return object_to_json(info)
+    @app.route("/api/load_canva", methods=["GET"])
+    def canvas_get():
+        all_canvas = repositories["canva"].get_all()
+        return object_to_json(all_canvas)
 
     @app.route("/api/canva/<id>", methods=["GET"])
     def canva_get_by_id(id):

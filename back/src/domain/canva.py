@@ -50,6 +50,27 @@ class CanvasRepository:
         cursor.execute(sql)
         conn.commit()
 
+    def get_all_canva(self):
+        sql = """SELECT * FROM canva"""
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+
+        data = cursor.fetchall()
+
+        canvas = []
+        for item in data:
+            canva = Canva(
+                id=item["id"],
+                name=item["name"],
+                width=item["width"],
+                height=item["height"],
+                pixels=item.loads(data["pixels"]),
+            )
+            canvas.append(canva)
+
+        return canvas
+
     def get_canva_by_id(self, id):
         sql = """SELECT * FROM canva WHERE id=:id"""
         conn = self.create_conn()
