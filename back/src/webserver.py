@@ -16,7 +16,7 @@ def create_app(repositories):
 
     @app.route("/api/load_canva", methods=["GET"])
     def canvas_get():
-        all_canvas = repositories["canva"].get_all()
+        all_canvas = repositories["canva"].get_all_canva()
         return object_to_json(all_canvas)
 
     @app.route("/api/canva/<id>", methods=["GET"])

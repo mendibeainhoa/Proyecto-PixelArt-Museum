@@ -65,7 +65,7 @@ class CanvasRepository:
                 name=item["name"],
                 width=item["width"],
                 height=item["height"],
-                pixels=item.loads(data["pixels"]),
+                pixels=json.loads(item["pixels"]),
             )
             canvas.append(canva)
 
