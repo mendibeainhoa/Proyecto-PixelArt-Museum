@@ -1,7 +1,9 @@
 <template>
   <h1>Your canvas</h1>
   <section class="canvas-section" v-for="canva in canvas" :key="canva.id">
-    {{ canva.id }}
+    <router-link :to="{ path: '/edit_pixel/' + canva.id }">
+      <h1>{{ canva.id }}</h1>
+    </router-link>
     <div
       v-for="pixel in canva.pixels"
       :key="pixel"
@@ -114,5 +116,14 @@ h1 {
   width: 30px;
   height: 30px;
   border: 1px solid black;
+}
+.canvas-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  width: 13rem;
+  border: solid 1px black;
+  margin: 3em 1em 1em 35em;
 }
 </style>
