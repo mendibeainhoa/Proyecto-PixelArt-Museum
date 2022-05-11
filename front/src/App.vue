@@ -3,6 +3,7 @@
     <h1>Pixel Art Museum</h1>
     <router-link to="/">Home</router-link>
     <router-link to="/edit_pixel/new"> | Edit</router-link>
+    <router-link to="/load_canva"> | Your canvas</router-link>
   </header>
   <router-view />
 </template>

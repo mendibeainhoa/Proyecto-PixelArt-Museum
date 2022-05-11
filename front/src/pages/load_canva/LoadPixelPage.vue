@@ -1,33 +1,12 @@
 <template>
   <h1>Your canvas</h1>
-  <section>
+  <section class="canvas-section" v-for="canva in canvas" :key="canva.id">
+    {{ canva.id }}
     <div
+      v-for="pixel in canva.pixels"
+      :key="pixel"
       class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[0] }"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[1] }"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[2] }"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[3] }"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[4] }"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[5] }"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[6] }"
+      v-bind:style="{ backgroundColor: pixel }"
     ></div>
   </section>
 </template>
@@ -37,37 +16,72 @@ import { get_canva_by_id } from "@/services/api.js";
 export default {
   data() {
     return {
-      canva: {
-        pixels: [
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-          "white",
-        ],
-      },
+      canvas: [
+        {
+          id: "canva-1",
+          pixels: [
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+          ],
+        },
+        {
+          id: "canva-2",
+          pixels: [
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "blue",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+            "white",
+          ],
+        },
+      ],
     };
   },
 
