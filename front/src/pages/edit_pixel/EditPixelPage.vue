@@ -3,195 +3,22 @@
   <h1><p>Grid Canvas</p></h1>
   <section class="pixel-canva">
     <div
+      v-for="pixel in canva.pixels"
+      :key="pixel"
       class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[0] }"
-      @click="onPixelClicked(0)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[1] }"
-      @click="onPixelClicked(1)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[2] }"
-      @click="onPixelClicked(2)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[3] }"
-      @click="onPixelClicked(3)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[4] }"
-      @click="onPixelClicked(4)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[5] }"
-      @click="onPixelClicked(5)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[6] }"
-      @click="onPixelClicked(6)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[7] }"
-      @click="onPixelClicked(7)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[8] }"
-      @click="onPixelClicked(8)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[9] }"
-      @click="onPixelClicked(9)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[10] }"
-      @click="onPixelClicked(10)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[11] }"
-      @click="onPixelClicked(11)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[12] }"
-      @click="onPixelClicked(12)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[13] }"
-      @click="onPixelClicked(13)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[14] }"
-      @click="onPixelClicked(14)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[15] }"
-      @click="onPixelClicked(15)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[16] }"
-      @click="onPixelClicked(16)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[17] }"
-      @click="onPixelClicked(17)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[18] }"
-      @click="onPixelClicked(18)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[19] }"
-      @click="onPixelClicked(19)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[20] }"
-      @click="onPixelClicked(20)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[21] }"
-      @click="onPixelClicked(21)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[22] }"
-      @click="onPixelClicked(22)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[23] }"
-      @click="onPixelClicked(23)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[24] }"
-      @click="onPixelClicked(24)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[25] }"
-      @click="onPixelClicked(25)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[26] }"
-      @click="onPixelClicked(26)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[27] }"
-      @click="onPixelClicked(27)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[28] }"
-      @click="onPixelClicked(28)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[29] }"
-      @click="onPixelClicked(29)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[30] }"
-      @click="onPixelClicked(30)"
-    ></div>
-    <div
-      class="canva"
-      v-bind:style="{ backgroundColor: canva.pixels[31] }"
-      @click="onPixelClicked(31)"
+      v-bind:style="{ backgroundColor: pixel }"
+      @click="onPixelClicked(pixel)"
     ></div>
   </section>
 
   <section id="colorPicker">
     <input
+      v-for="color in selectedColor"
+      :key="color"
       type="button"
       class="canva"
-      id="color-0"
-      v-bind:style="{ backgroundColor: selectedColor[0] }"
-      @click="onColorChange(0)"
-    />
-    <input
-      type="button"
-      class="canva"
-      id="color-1"
-      v-bind:style="{ backgroundColor: selectedColor[1] }"
-      @click="onColorChange(1)"
-    />
-    <input
-      type="button"
-      class="canva"
-      id="color-2"
-      v-bind:style="{ backgroundColor: selectedColor[2] }"
-      @click="onColorChange(2)"
-    />
-    <input
-      type="button"
-      class="canva"
-      id="color-3"
-      v-bind:style="{ backgroundColor: selectedColor[3] }"
-      @click="onColorChange(3)"
+      v-bind:style="{ backgroundColor: color }"
+      @click="onColorChange(color)"
     />
     <input
       type="color"
@@ -199,28 +26,49 @@
       v-model="selectedColor[4]"
       @click="onPickerButton(4)"
     />
+    <button
+      type="button"
+      id="borrador"
+      @click="onResetColor()"
+      value="Borrar color"
+    >
+      <img
+        src="https://s3.amazonaws.com/iconbros/icons/icon_svgs/000/008/875/original/eraser.svg?1592504986"
+        height="35"
+        width="35"
+      />
+    </button>
   </section>
   <ul class="canva-info">
-    <li>Title: {{ canva.name }}</li>
-    <li>Width and height: {{ canva.width }} x {{ canva.height }}</li>
+    <li>Title:</li>
+    <input type="text" />
   </ul>
 
-  <button
-    type="button"
-    id="borrador"
-    @click="onResetColor()"
-    value="Borrar color"
-  >
-    <img
-      src="https://s3.amazonaws.com/iconbros/icons/icon_svgs/000/008/875/original/eraser.svg?1592504986"
-      height="35"
-      width="35"
-    />
-  </button>
+  <section class="pixel-size">
+    <button
+      @click="onChangeSize"
+      type="button"
+      class="button-add"
+      id="picker__add-columns"
+    >
+      +
+    </button>
+    -----------
+    <button
+      @click="onSubstractSize"
+      type="button"
+      class="button-remove"
+      id="picker__remove-columns"
+    >
+      -
+    </button>
+    {{ this.contador }}
+  </section>
+
   <br />
   <button @click="onSaveCanva">Save</button>
   <br />
-  {{ $data }}
+  <!-- {{ $data }} -->
 </template>
 
 <script>
@@ -230,11 +78,16 @@ export default {
   data() {
     return {
       selectedColor: ["red", "blue", "green", "yellow"],
-
       index: 0,
+      contador: 0,
       borrador: "",
       canva: {
         pixels: [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
           "white",
           "white",
           "white",
@@ -283,6 +136,12 @@ export default {
       this.canva = await canva_post(canva);
     },
 
+    onChangeSize() {
+      this.contador += 1;
+    },
+    onSubstractSize() {
+      this.contador -= 1;
+    },
     onColorChange(position) {
       this.canva.pixels[this.index] = this.selectedColor[position];
       console.log(this.selectedColor[position]);
