@@ -3,28 +3,48 @@
   <h1><p>Grid Canvas</p></h1>
   <section class="pixel-canva">
     <div
-      v-for="pixel in canva.pixels"
+      v-for="(pixel, index) in canva.pixels"
       :key="pixel"
       class="canva"
       v-bind:style="{ backgroundColor: pixel }"
-      @click="onPixelClicked(pixel)"
+      @click="onPixelClicked(index)"
     ></div>
   </section>
 
   <section id="colorPicker">
     <input
-      v-for="color in selectedColor"
-      :key="color"
       type="button"
       class="canva"
-      v-bind:style="{ backgroundColor: color }"
-      @click="onColorChange(color)"
+      id="color-1"
+      v-bind:style="{ backgroundColor: selectedColor[0] }"
+      @click="onColorChange(0)"
+    />
+    <input
+      type="button"
+      class="canva"
+      id="color-2"
+      v-bind:style="{ backgroundColor: selectedColor[1] }"
+      @click="onColorChange(1)"
+    />
+    <input
+      type="button"
+      class="canva"
+      id="color-3"
+      v-bind:style="{ backgroundColor: selectedColor[2] }"
+      @click="onColorChange(2)"
+    />
+    <input
+      type="button"
+      class="canva"
+      id="color-4"
+      v-bind:style="{ backgroundColor: selectedColor[3] }"
+      @click="onColorChange(3)"
     />
     <input
       type="color"
-      id="color-4"
-      v-model="selectedColor[4]"
-      @click="onPickerButton(4)"
+      id="color-5"
+      v-model="selectedColor[5]"
+      @click="onPickerButton(5)"
     />
     <button
       type="button"
@@ -63,6 +83,8 @@
       -
     </button>
     {{ this.contador }}
+    <br />
+    <!-- {{ $data }} -->
   </section>
 
   <br />
@@ -152,6 +174,7 @@ export default {
     },
     onPixelClicked(position) {
       this.index = position;
+      console.log(this.index);
     },
     onResetColor() {
       this.canva.pixels[this.index] = this.borrador;
