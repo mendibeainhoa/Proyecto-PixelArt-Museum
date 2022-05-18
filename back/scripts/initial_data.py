@@ -35,6 +35,16 @@ canva = Canva(
         "white",
         "white",
         "white",
+        "#b34747",
+        "#793434",
+        "#b34747",
+        "#793434",
+        "#b34747",
+        "#793434",
+        "#b34747",
+        "#793434",
+        "#b34747",
+        "#793434",
     ],
 )
 canvas_repository = CanvasRepository(database_path)

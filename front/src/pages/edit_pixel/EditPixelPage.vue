@@ -61,7 +61,7 @@
   </section>
   <ul class="canva-info">
     <li>Title:</li>
-    <input type="text" />
+    <input class="name" type="text" />
   </ul>
 
   <section class="pixel-size">
@@ -217,13 +217,32 @@ input {
   height: 30px;
   border: 1px solid black;
 }
-.load-button {
-  font-size: 10px;
-  padding: 0.2em 1em;
+.name {
+  line-height: 28px;
+  border: 2px solid transparent;
+  border-bottom-color: #777;
+  padding: 0.2rem 0;
+  outline: none;
+  background-color: transparent;
+  color: #0d0c22;
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.save-button {
-  font-size: 10px;
-  padding: 0.2em 1em;
+
+.name:focus,
+input:hover {
+  outline: none;
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  border-color: #7a9cc6;
+}
+
+.name::placeholder {
+  color: #777;
+}
+
+.name:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 </style>
 

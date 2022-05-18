@@ -17,5 +17,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
   font-family: "Press Start 2P", cursive;
+  background-color: rgba(145, 141, 141, 0.622);
 }
 </style>

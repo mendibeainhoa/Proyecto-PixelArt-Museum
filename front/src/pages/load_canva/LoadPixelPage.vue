@@ -2,7 +2,7 @@
   <h1>Your canvas</h1>
   <section class="canvas-section" v-for="canva in canvas" :key="canva.id">
     <router-link :to="{ path: '/edit_pixel/' + canva.id }">
-      <h1>{{ canva.id }}</h1>
+      <h1>{{ canva.name }}</h1>
     </router-link>
     <div
       v-for="pixel in canva.pixels"
@@ -14,74 +14,14 @@
 </template>
 
 <script>
-import { get_canva_by_id } from "@/services/api.js";
+import { get_canva } from "@/services/api.js";
 export default {
   data() {
     return {
       canvas: [
         {
-          id: "canva-1",
-          pixels: [
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-          ],
-        },
-        {
-          id: "canva-2",
-          pixels: [
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "blue",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-            "white",
-          ],
+          name: "",
+          pixels: [],
         },
       ],
     };
@@ -92,8 +32,8 @@ export default {
   },
   methods: {
     async onLoadSprite() {
-      let canvaId = this.$route.params;
-      this.canva = await get_canva_by_id(canvaId);
+      let canva = this.$route.params;
+      this.canvas = await get_canva(canva);
       console.log(this.canva);
     },
   },

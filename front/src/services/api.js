@@ -8,6 +8,14 @@ export async function get_canva_by_id(id) {
   const response = await fetch(`${config.API_PATH}/canva/${id}`, settings);
   return await response.json();
 }
+export async function get_canva() {
+  const settings = {
+    method: "GET",
+  };
+  const response = await fetch(`${config.API_PATH}/load_canva`, settings);
+  const canvas = await response.json();
+  return canvas;
+}
 export async function canva_post(canva) {
   canva.id = uuidv4();
   const settings = {
