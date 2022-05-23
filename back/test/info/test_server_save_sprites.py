@@ -45,7 +45,7 @@ def test_server_should_save_sprites():
         ],
     }
 
-    response = client.post("api/canvas/sprite-1", json=body)
+    response = client.post("api/canvas", json=body)
     assert response.status_code == 200
 
     response_get = client.get("api/canva/canva-1")

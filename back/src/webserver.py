@@ -25,8 +25,8 @@ def create_app(repositories):
         canva = repositories["canva"].get_canva_by_id(id)
         return object_to_json(canva)
 
-    @app.route("/api/canvas/<id>", methods=["POST"])
-    def canva_post(id):
+    @app.route("/api/canvas", methods=["POST"])
+    def canva_post():
         body = request.json
         canva = Canva(**body)
         repositories["canva"].save(canva)

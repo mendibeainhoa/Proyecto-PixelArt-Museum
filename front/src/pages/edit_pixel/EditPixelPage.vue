@@ -154,8 +154,10 @@ export default {
       }
     },
     async onSaveCanva() {
-      let canva = this.$route.params;
-      this.canva = await canva_post(canva);
+      let response = canva_post(this.canva);
+      if (response.status == 200) {
+        alert("TU DIBUJO SE HA GUARDADO CON ÉXITO");
+      }
     },
 
     onChangeSize() {

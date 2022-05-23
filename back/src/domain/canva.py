@@ -91,7 +91,7 @@ class CanvasRepository:
 
     def save(self, canva):
         print(canva.to_dict())
-        sql = """INSERT INTO canva(id, name, width, height, pixels) values
+        sql = """INSERT OR REPLACE INTO canva(id, name, width, height, pixels) values
         (:id, :name, :width, :height, :pixels)"""
         conn = self.create_conn()
         cursor = conn.cursor()

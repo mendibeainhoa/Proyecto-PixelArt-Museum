@@ -62,7 +62,7 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
 
-  width: 13rem;
+  width: 9em;
   border: solid 1px black;
   margin: 3em 1em 1em 35em;
 }
