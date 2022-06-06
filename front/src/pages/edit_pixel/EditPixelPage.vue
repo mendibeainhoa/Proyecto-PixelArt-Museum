@@ -63,7 +63,8 @@
 
     <input class="name" type="text" placeholder=" titulo" />
 
-    <section class="pixel-size">
+    <section class="pixel-add">
+      <p>Añadir pixel</p>
       <button
         @click="onChangeSize"
         type="button"
@@ -72,7 +73,7 @@
       >
         +
       </button>
-      -----------
+
       <button
         @click="onSubstractSize"
         type="button"
@@ -81,9 +82,7 @@
       >
         -
       </button>
-      {{ this.contador }}
     </section>
-
     <button @click="onSaveCanva">Save</button>
   </section>
 </template>
@@ -164,6 +163,10 @@ export default {
 h1 {
   margin: 1em;
   font-size: 20px;
+}
+.pixel-add {
+  margin-right: 60%;
+  margin: 1px;
 }
 #edit-page {
   display: grid;
