@@ -1,6 +1,5 @@
 import sqlite3
 import json
-from unittest import result
 
 
 class Canva:

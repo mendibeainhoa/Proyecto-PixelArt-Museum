@@ -4,6 +4,7 @@ from flask_cors import CORS
 
 from src.lib.utils import object_to_json
 from src.domain.canva import Canva
+from src.domain.user import User
 
 
 def create_app(repositories):
@@ -32,5 +33,19 @@ def create_app(repositories):
         repositories["canva"].save(canva)
 
         return "", 200
+
+    @app.route("/auth/login", methods=["POST"])
+    def login():
+        body = request.json
+        user = repositories["users"].get_by_name(body["name"])
+        if user is None or body["password"] != user.password:
+            return "", 401
+
+        return user.to_dict(), 200
+
+    @app.route("/api/users", methods=["GET"])
+    def get_users():
+        users = repositories["users"].get_all()
+        return object_to_json(users)
 
     return app
