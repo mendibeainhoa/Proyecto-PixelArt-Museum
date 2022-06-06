@@ -5,7 +5,7 @@
     <label> Usuario </label>
     <input type="text" v-model="name" />
     <label> Password </label>
-    <input type="text" v-model="password" />
+    <input type="password" v-model="password" />
     <button class="access-button" @click="onAccessButton">Acceder</button>
   </section>
   <canvas id="snow"></canvas>
