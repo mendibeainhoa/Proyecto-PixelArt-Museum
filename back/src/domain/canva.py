@@ -104,5 +104,11 @@ class CanvasRepository:
                 "pixels": json.dumps(canva.pixels),
             },
         )
+        conn.commit()
 
+    def delete_canva(self, id):
+        sql = """DELETE FROM canva WHERE id =:id"""
+        conn = self.create_conn()
+        cursor = conn.cursor()
+        cursor.execute(sql, {"id": id})
         conn.commit()
