@@ -1,15 +1,18 @@
 <template>
   <h1>Your canvas</h1>
-  <section class="canvas-section" v-for="canva in canvas" :key="canva.id">
-    <router-link :to="{ path: '/edit_pixel/' + canva.id }">
-      <h1>{{ canva.name }}</h1>
-    </router-link>
-    <div
-      v-for="pixel in canva.pixels"
-      :key="pixel"
-      class="canva"
-      v-bind:style="{ backgroundColor: pixel }"
-    ></div>
+  <section class="canvas-boxes">
+    <section class="canvas-section" v-for="canva in canvas" :key="canva.id">
+      <router-link :to="{ path: '/edit_pixel/' + canva.id }">
+        <h1>{{ canva.name }}</h1>
+      </router-link>
+
+      <div
+        v-for="pixel in canva.pixels"
+        :key="pixel"
+        class="canva"
+        v-bind:style="{ backgroundColor: pixel }"
+      ></div>
+    </section>
   </section>
 </template>
 
@@ -51,6 +54,11 @@ export default {
 h1 {
   margin: 1em;
   font-size: 20px;
+}
+.canvas-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 .canva {
   width: 30px;

@@ -4,42 +4,22 @@
   <section id="edit-page">
     <section class="pixel-canva">
       <div
-        v-for="(pixel, index) in canva.pixels"
-        :key="pixel"
+        v-for="(pixel, idx) of canva.pixels"
+        :key="idx"
         class="canva"
         v-bind:style="{ backgroundColor: pixel }"
-        @click="onPixelClicked(index)"
+        @click="onPixelClicked(idx)"
       ></div>
     </section>
 
     <section id="colorPicker">
       <input
+        v-for="color in selectedColor"
+        :key="color"
         type="button"
         class="canva"
-        id="color-1"
-        v-bind:style="{ backgroundColor: selectedColor[0] }"
-        @click="onColorChange(0)"
-      />
-      <input
-        type="button"
-        class="canva"
-        id="color-2"
-        v-bind:style="{ backgroundColor: selectedColor[1] }"
-        @click="onColorChange(1)"
-      />
-      <input
-        type="button"
-        class="canva"
-        id="color-3"
-        v-bind:style="{ backgroundColor: selectedColor[2] }"
-        @click="onColorChange(2)"
-      />
-      <input
-        type="button"
-        class="canva"
-        id="color-4"
-        v-bind:style="{ backgroundColor: selectedColor[3] }"
-        @click="onColorChange(3)"
+        v-bind:style="{ backgroundColor: color }"
+        @click="onColorChange(color)"
       />
       <input
         type="color"
@@ -73,7 +53,6 @@
       >
         +
       </button>
-
       <button
         @click="onSubstractSize"
         type="button"
@@ -134,9 +113,9 @@ export default {
     onSubstractSize() {
       this.canva.pixels.pop("white");
     },
-    onColorChange(position) {
-      this.canva.pixels[this.index] = this.selectedColor[position];
-      console.log(this.selectedColor[position]);
+    onColorChange(color) {
+      this.canva.pixels[this.index] = color;
+      console.log(color);
     },
     onPickerButton(position) {
       this.canva.pixels[this.index] = this.selectedColor[position];

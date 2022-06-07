@@ -70,6 +70,7 @@ export default {
   display: grid;
   place-content: center;
   margin: 25em;
+  
 }
 .login,
 label {
