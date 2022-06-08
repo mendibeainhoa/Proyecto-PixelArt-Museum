@@ -60,7 +60,7 @@ def test_should_delete_canvas():
         ],
     }
 
-    response_delete = client.delete("/api/load_canva", json=body)
+    response_delete = client.delete("/api/load_canva/canva-1", json=body)
     assert response_delete.status_code == 200
 
     # ASSERT (then)

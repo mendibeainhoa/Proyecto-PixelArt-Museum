@@ -48,10 +48,9 @@ def create_app(repositories):
         users = repositories["users"].get_all()
         return object_to_json(users)
 
-    @app.route("/api/load_canva", methods=["DELETE"])
-    def delete_canva():
-        body = request.json
-        canvas = body["id"]
+    @app.route("/api/load_canva/<id>", methods=["DELETE"])
+    def delete_canva(id):
+        canvas = id
         repositories["canva"].delete_canva(canvas)
         return "", 200
 
