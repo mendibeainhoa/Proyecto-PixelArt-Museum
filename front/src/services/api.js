@@ -26,3 +26,13 @@ export async function canva_post(canva) {
   let response = await fetch(`${config.API_PATH}/canvas`, settings);
   return response;
 }
+export async function delete_canva(id) {
+  const settings = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  let response = await fetch(`${config.API_PATH}/load_canva/${id}`, settings);
+  return response;
+}

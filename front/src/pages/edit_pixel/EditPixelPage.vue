@@ -41,7 +41,12 @@
       </button>
     </section>
 
-    <input class="name" type="text" placeholder=" titulo" />
+    <input
+      class="name"
+      type="text"
+      placeholder=" titulo"
+      v-model="canva.name"
+    />
 
     <section class="pixel-add">
       <p>Añadir pixel</p>

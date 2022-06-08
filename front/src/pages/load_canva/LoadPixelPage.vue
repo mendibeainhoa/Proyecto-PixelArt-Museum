@@ -3,9 +3,11 @@
   <section class="canvas-boxes">
     <section class="canvas-section" v-for="canva in canvas" :key="canva.id">
       <router-link :to="{ path: '/edit_pixel/' + canva.id }">
-        <h1>{{ canva.name }}</h1>
+        <h2>{{ canva.name }}</h2>
       </router-link>
-
+      <button class="delete-button" @click="onDeleteCanva(canva.id)">
+        <span> X </span>
+      </button>
       <div
         v-for="pixel in canva.pixels"
         :key="pixel"
@@ -18,6 +20,7 @@
 
 <script>
 import { get_canva } from "@/services/api.js";
+import { delete_canva } from "@/services/api.js";
 export default {
   data() {
     return {
@@ -39,6 +42,13 @@ export default {
       this.canvas = await get_canva(canva);
       console.log(this.canva);
     },
+    async onDeleteCanva(id) {
+      if (confirm("¿Estas seguro que quieres eliminar tu dibujo?")) {
+        await delete_canva(id);
+      } else {
+        console.log("Dibujo no eliminado");
+      }
+    },
   },
 };
 </script>
@@ -57,7 +67,7 @@ h1 {
 }
 .canvas-boxes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
 }
 .canva {
