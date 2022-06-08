@@ -1,4 +1,4 @@
-# Aplicación semilla (backend)
+# Aplicación PIXELART MUSEUM
 
 ## Puesta en marcha
 

@@ -13,6 +13,7 @@ def setup():
     ainhoa = User(
         id="user-ainhoa",
         name="Ainhoa",
+        email="petin@example.es",
         password="aguacate",
     )
     user_repository.save(ainhoa)

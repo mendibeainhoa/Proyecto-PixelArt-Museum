@@ -94,8 +94,12 @@ canvas_repository.save(canva)
 canvas_repository.save(canva_two)
 
 
-user_one = User(id="user-ainhoa", name="ainhoa", password="aguacate")
-user_two = User(id="user-gabriel", name="an3xo", password="petin")
+user_one = User(
+    id="user-ainhoa", name="ainhoa", email="ainhoa@example.es", password="aguacate"
+)
+user_two = User(
+    id="user-gabriel", name="an3xo", email="petin@example.es", password="petin"
+)
 user_repository = UserRepository(database_path)
 user_repository.save(user_one)
 user_repository.save(user_two)

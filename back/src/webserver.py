@@ -54,4 +54,12 @@ def create_app(repositories):
         repositories["canva"].delete_canva(canvas)
         return "", 200
 
+    @app.route("/api/users", methods=["POST"])
+    def users_post():
+        body = request.json
+        users = User(**body)
+        repositories["users"].save(users)
+
+        return "", 200
+
     return app

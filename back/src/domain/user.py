@@ -5,13 +5,19 @@ import sqlite3
 
 
 class User:
-    def __init__(self, id, name, password):
+    def __init__(self, id, name, email, password):
         self.id = id
         self.name = name
+        self.email = email
         self.password = password
 
     def to_dict(self):
-        return {"id": self.id, "name": self.name, "password": self.password}
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email,
+            "password": self.password,
+        }
 
 
 class UserRepository:
@@ -29,6 +35,7 @@ class UserRepository:
            CREATE TABLE if not exists users (
                 id varchar primary key,
                 name varchar,
+                email varchar,
                 password varchar
             )
         """
@@ -63,12 +70,18 @@ class UserRepository:
         return user
 
     def save(self, user):
-        sql = """insert into users (id, name, password) values (
-            :id, :name, :password
+        sql = """insert into users (id, name, email, password) values (
+            :id, :name, :email, :password
         ) """
         conn = self.create_conn()
         cursor = conn.cursor()
         cursor.execute(
-            sql, {"id": user.id, "name": user.name, "password": user.password}
+            sql,
+            {
+                "id": user.id,
+                "name": user.name,
+                "email": user.email,
+                "password": user.password,
+            },
         )
         conn.commit()
