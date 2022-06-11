@@ -7,10 +7,6 @@
       rel="stylesheet"
     />
   </header>
-  <router-link to="/">Home</router-link>
-  <router-link to="/edit_pixel/new"> Edit</router-link>
-  <!-- <router-link to="/load_canva"> Your canvas</router-link> -->
-  <router-link to="/users"> New register</router-link>
   <router-view />
 </template>
 

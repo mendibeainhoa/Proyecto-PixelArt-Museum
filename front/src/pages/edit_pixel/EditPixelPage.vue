@@ -1,24 +1,34 @@
 
 <template>
-  <h1><p>Grid Canvas</p></h1>
-  <section id="canva-editor">
-    <section id="edit-page">
-      <section class="pixel-canva">
-        <div
-          v-for="(pixel, idx) of canva.pixels"
-          :key="idx"
-          class="canva"
-          v-bind:style="{ backgroundColor: pixel }"
-          @click="onPixelClicked(idx)"
-        ></div>
-      </section>
+  <div class="header">
+    <h1>Crea tu PixelArt</h1>
+    <button class="nes-btn" @click="$router.go(-1)">↩</button>
+    <input
+      class="name"
+      type="text"
+      placeholder=" titulo"
+      v-model="canva.name"
+    />
+  </div>
 
-      <section class="colorPicker">
+  <div class="pixel-areas">
+    <section class="pixel-canva">
+      <div
+        v-for="(pixel, idx) of canva.pixels"
+        :key="idx"
+        class="canva"
+        v-bind:style="{ backgroundColor: pixel }"
+        @click="onPixelClicked(idx)"
+      ></div>
+    </section>
+
+    <section class="color-picker">
+      <div class="colors, nes-input">
         <input
           v-for="color in selectedColor"
           :key="color"
           type="button"
-          class="canva"
+          class="color-box"
           v-bind:style="{ backgroundColor: color }"
           @click="onColorChange(color)"
         />
@@ -28,48 +38,43 @@
           v-model="selectedColor[5]"
           @click="onPickerButton(5)"
         />
+      </div>
+      <button
+        type="button"
+        id="borrador"
+        @click="onResetColor()"
+        value="Borrar color"
+        class="nes-btn"
+      >
+        <img
+          src="https://s3.amazonaws.com/iconbros/icons/icon_svgs/000/008/875/original/eraser.svg?1592504986"
+          height="35"
+          width="35"
+        />
+      </button>
+
+      <section class="pixel-add">
+        <p>Añadir pixel</p>
         <button
+          @click="onChangeSize"
           type="button"
-          id="borrador"
-          @click="onResetColor()"
-          value="Borrar color"
+          id="button-add"
+          class="nes-btn"
         >
-          <img
-            src="https://s3.amazonaws.com/iconbros/icons/icon_svgs/000/008/875/original/eraser.svg?1592504986"
-            height="35"
-            width="35"
-          />
+          +
+        </button>
+        <button
+          @click="onSubstractSize"
+          type="button"
+          id="button-remove"
+          class="nes-btn"
+        >
+          -
         </button>
       </section>
     </section>
-    <input
-      class="name"
-      type="text"
-      placeholder=" titulo"
-      v-model="canva.name"
-    />
-
-    <section class="pixel-add">
-      <p>Añadir pixel</p>
-      <button
-        @click="onChangeSize"
-        type="button"
-        class="button-add"
-        id="picker__add-columns"
-      >
-        +
-      </button>
-      <button
-        @click="onSubstractSize"
-        type="button"
-        class="button-remove"
-        id="picker__remove-columns"
-      >
-        -
-      </button>
-    </section>
-    <button @click="onSaveCanva">Save</button>
-  </section>
+  </div>
+  <button @click="onSaveCanva" class="nes-btn is-success">Save</button>
 </template>
 
 <script>
@@ -163,35 +168,50 @@ export default {
   padding: 0;
   font-family: "Press Start 2P", cursive;
 }
-h1 {
+.header button {
+  justify-items: left;
+}
+.header h1 {
   margin: 1em;
   font-size: 20px;
 }
-.colorPicker {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  /* border: 1px solid black; */
+.color-picker {
+  display: flex;
+  flex-direction: column;
+  min-width: 20em;
+  max-width: 10rem;
+}
+.color-picker,
+input {
+  margin-top: 2em;
 }
 .pixel-add {
-  margin-right: 60%;
-  margin: 1px;
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+.pixel-add p {
+  text-align: left;
+}
+.pixel-add button {
+  margin-left: 1em;
+  padding: 0.3em;
+}
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .pixel-canva {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: 40%;
-  width: 17rem;
+  width: 20rem;
   border: solid 1px black;
+  margin: 2em 5em 2em 0;
 }
-.colorPicker {
-  max-width: 10rem;
-}
-.colorPicker,
-input {
-  margin: 1em;
-}
+
 input {
   margin: 1em;
 }
@@ -199,6 +219,13 @@ input {
   width: 30px;
   height: 30px;
   border: 1px solid black;
+  margin: 0;
+}
+.color-box {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  margin: 0;
 }
 .name {
   line-height: 28px;
@@ -226,6 +253,15 @@ input:hover {
 .name:focus::placeholder {
   opacity: 0;
   transition: opacity 0.3s;
+}
+.return-button {
+  display: flex;
+  align-content: flex-start;
+  margin-left: 1em;
+}
+.pixel-areas {
+  display: flex;
+  justify-content: center;
 }
 </style>
 

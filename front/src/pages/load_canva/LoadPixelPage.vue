@@ -1,4 +1,8 @@
 <template>
+  <header>
+    <router-link to="/edit_pixel/new"> Edit</router-link>
+    <router-link to="/load_canva"> Your canvas</router-link>
+  </header>
   <h1>Your canvas</h1>
   <section class="canvas-boxes">
     <section class="canvas-section" v-for="canva in canvas" :key="canva.id">

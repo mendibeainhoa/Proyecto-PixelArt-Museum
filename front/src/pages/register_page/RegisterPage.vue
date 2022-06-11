@@ -1,12 +1,17 @@
 <template>
   <section class="register">
-    <h2 class="register-title">REGISTRO</h2>
-    <label> Nombre </label>
-    <input type="text" v-model="register.name" />
-    <label> Email </label>
-    <input type="email" v-model="register.email" />
-    <label> Password </label>
-    <input type="password" v-model="register.password" />
+    <h1 class="register-title">REGISTRO</h1>
+    <label for="name-area"> Nombre </label>
+    <input type="text" id="name-area" name="name" v-model="register.name" />
+    <label for="email-area"> Email </label>
+    <input type="email" id="email-area" name="email" v-model="register.email" />
+    <label for="password"> Password </label>
+    <input
+      type="password"
+      id="password-area"
+      name="password"
+      v-model="register.password"
+    />
     <button class="save-button" @click.prevent="onSaveButton">
       Guardar datos
     </button>
@@ -48,7 +53,7 @@ export default {
       let statusLogin = response.status;
 
       if (statusLogin === 200) {
-        this.$router.push("/load_canva");
+        this.$router.push("/");
       } else {
         alert("Registro denegado");
       }
