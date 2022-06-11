@@ -3,7 +3,7 @@
   <section class="canvas-boxes">
     <section class="canvas-section" v-for="canva in canvas" :key="canva.id">
       <router-link :to="{ path: '/edit_pixel/' + canva.id }">
-        <h2>{{ canva.name }}</h2>
+        <p class="title-canva">{{ canva.name }}</p>
       </router-link>
       <button class="delete-button" @click="onDeleteCanva(canva.id)">
         <span> X </span>
@@ -45,6 +45,8 @@ export default {
     async onDeleteCanva(id) {
       if (confirm("¿Estas seguro que quieres eliminar tu dibujo?")) {
         await delete_canva(id);
+        location.reload();
+        alert("Canva eliminado exitosamente");
       } else {
         console.log("Dibujo no eliminado");
       }
@@ -64,6 +66,9 @@ export default {
 h1 {
   margin: 1em;
   font-size: 20px;
+}
+.title-canva {
+  font-weight: 8px;
 }
 .canvas-boxes {
   display: grid;

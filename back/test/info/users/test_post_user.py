@@ -17,8 +17,18 @@ def test_should_return_new_user():
         "password": "petin",
     }
 
-    response = client.post(
+    response_post = client.post(
         "/api/users", json=body, headers={"Authorization": "user-gabri"}
     )
 
-    assert response.status_code == 200
+    assert response_post.status_code == 200
+
+    response_get = client.get(
+        "/api/users", json=body, headers={"Authorization": "user-gabri"}
+    )
+
+    user = response_get.json
+    assert user[0]["id"] == "user-gabri"
+    assert user[0]["name"] == "an3xo"
+    assert user[0]["email"] == "petin@example.es"
+    assert user[0]["password"] == "petin"

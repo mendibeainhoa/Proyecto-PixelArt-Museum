@@ -1,46 +1,47 @@
 
 <template>
   <h1><p>Grid Canvas</p></h1>
-  <section id="edit-page">
-    <section class="pixel-canva">
-      <div
-        v-for="(pixel, idx) of canva.pixels"
-        :key="idx"
-        class="canva"
-        v-bind:style="{ backgroundColor: pixel }"
-        @click="onPixelClicked(idx)"
-      ></div>
-    </section>
+  <section id="canva-editor">
+    <section id="edit-page">
+      <section class="pixel-canva">
+        <div
+          v-for="(pixel, idx) of canva.pixels"
+          :key="idx"
+          class="canva"
+          v-bind:style="{ backgroundColor: pixel }"
+          @click="onPixelClicked(idx)"
+        ></div>
+      </section>
 
-    <section id="colorPicker">
-      <input
-        v-for="color in selectedColor"
-        :key="color"
-        type="button"
-        class="canva"
-        v-bind:style="{ backgroundColor: color }"
-        @click="onColorChange(color)"
-      />
-      <input
-        type="color"
-        id="color-5"
-        v-model="selectedColor[5]"
-        @click="onPickerButton(5)"
-      />
-      <button
-        type="button"
-        id="borrador"
-        @click="onResetColor()"
-        value="Borrar color"
-      >
-        <img
-          src="https://s3.amazonaws.com/iconbros/icons/icon_svgs/000/008/875/original/eraser.svg?1592504986"
-          height="35"
-          width="35"
+      <section class="colorPicker">
+        <input
+          v-for="color in selectedColor"
+          :key="color"
+          type="button"
+          class="canva"
+          v-bind:style="{ backgroundColor: color }"
+          @click="onColorChange(color)"
         />
-      </button>
+        <input
+          type="color"
+          id="color-5"
+          v-model="selectedColor[5]"
+          @click="onPickerButton(5)"
+        />
+        <button
+          type="button"
+          id="borrador"
+          @click="onResetColor()"
+          value="Borrar color"
+        >
+          <img
+            src="https://s3.amazonaws.com/iconbros/icons/icon_svgs/000/008/875/original/eraser.svg?1592504986"
+            height="35"
+            width="35"
+          />
+        </button>
+      </section>
     </section>
-
     <input
       class="name"
       type="text"
@@ -74,10 +75,26 @@
 <script>
 import { get_canva_by_id } from "@/services/api.js";
 import { canva_post } from "@/services/api.js";
+
 export default {
   data() {
     return {
-      selectedColor: ["red", "blue", "green", "yellow"],
+      selectedColor: [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "#89FA5F",
+        "#58C5D6",
+        "#9658ED",
+        "#D65345",
+        "#FAD369",
+        "#2D98FA",
+        "#585FD6",
+        "#9658ED",
+        "#C745D6",
+        "#FA3E78",
+      ],
       index: 0,
       contador: 0,
       borrador: "",
@@ -103,10 +120,12 @@ export default {
       }
     },
     async onSaveCanva() {
-      let response = canva_post(this.canva);
-      if (response.status == 200) {
-        alert("TU DIBUJO SE HA GUARDADO CON ÉXITO");
+      let response = await canva_post(this.canva);
+      if (response.statusText == "OK") {
+        alert("Tu diseño se ha guardado con exito");
+        this.$router.push("/load_canva");
       }
+      console.log(response);
     },
     async canvaBox() {
       this.canva.pixels == this.canva.pixels;
@@ -148,14 +167,16 @@ h1 {
   margin: 1em;
   font-size: 20px;
 }
+.colorPicker {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  /* border: 1px solid black; */
+}
 .pixel-add {
   margin-right: 60%;
   margin: 1px;
 }
-#edit-page {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+
 .pixel-canva {
   display: flex;
   flex-wrap: wrap;
@@ -164,12 +185,12 @@ h1 {
   width: 17rem;
   border: solid 1px black;
 }
-
-#colorPicker {
-  display: flex;
-  justify-content: center;
+.colorPicker {
+  max-width: 10rem;
+}
+.colorPicker,
+input {
   margin: 1em;
-  border: 1px solid black;
 }
 input {
   margin: 1em;

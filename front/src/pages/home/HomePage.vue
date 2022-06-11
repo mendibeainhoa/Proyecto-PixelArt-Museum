@@ -1,5 +1,9 @@
 <template>
   <h1 class="main-title">Welcome to PixelArt Museum</h1>
+  <link
+    href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
+    rel="stylesheet"
+  />
   <section class="login">
     <h2 class="access-title">Sing in</h2>
     <label> Usuario </label>
@@ -70,7 +74,6 @@ export default {
   display: grid;
   place-content: center;
   margin: 25em;
-  
 }
 .login,
 label {

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/pages/home/HomePage.vue";
 import Edit from "@/pages/edit_pixel/EditPixelPage.vue";
 import Load from "@/pages/load_canva/LoadPixelPage.vue";
+import Register from "@/pages/register_page/RegisterPage.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/load_canva",
     name: "Load",
     component: Load,
+  },
+  {
+    path: "/users",
+    name: "Register",
+    component: Register,
   },
 ];
 
