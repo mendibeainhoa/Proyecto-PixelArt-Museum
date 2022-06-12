@@ -72,7 +72,7 @@ export default {
   display: grid;
   place-content: center;
   margin: 25em;
-  margin-top: 1em;
+  margin-top: 5em;
   border-radius: 20px;
   border: 1px solid #11101062;
   background-color: #18161562;

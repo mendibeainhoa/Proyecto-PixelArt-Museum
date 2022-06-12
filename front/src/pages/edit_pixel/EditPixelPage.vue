@@ -72,9 +72,18 @@
           -
         </button>
       </section>
+      <section class="pixel-mirror">
+        <div
+          v-for="(pixel, idx) of canva.pixels"
+          :key="idx"
+          class="canva-mirror"
+          v-bind:style="{ backgroundColor: pixel }"
+          @click="onPixelClicked(idx)"
+        ></div>
+      </section>
     </section>
   </div>
-  <button @click="onSaveCanva" class="nes-btn is-success">Save</button>
+  <button @click="onSaveCanva" class="save">Save</button>
 </template>
 
 <script>
@@ -108,7 +117,7 @@ export default {
         name: "",
         width: 0,
         height: 0,
-        pixels: Array(64).fill("white"),
+        pixels: Array(100).fill("white"),
       },
     };
   },
@@ -161,7 +170,7 @@ export default {
 };
 </script>
 
-<style scoped >
+<style  >
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
   margin: 0;
@@ -208,19 +217,26 @@ input {
   flex-wrap: wrap;
   justify-content: center;
   width: 20rem;
-  border: solid 1px black;
   margin: 2em 5em 2em 0;
 }
 
 input {
   margin: 1em;
 }
+
 .canva {
   width: 30px;
   height: 30px;
-  border: 1px solid black;
+  border: 1px solid rgba(22, 22, 22, 0.637);
   margin: 0;
 }
+.canva:hover {
+  border-color: rgb(250, 225, 5);
+}
+.canva:after {
+  border-color: rgb(250, 5, 229);
+}
+
 .color-box {
   width: 30px;
   height: 30px;
@@ -263,6 +279,43 @@ input:hover {
   display: flex;
   justify-content: center;
 }
+.save {
+  display: block;
+  position: relative;
+  width: 160px;
+  height: 65px;
+  color: white;
+  font-size: 16px;
+  text-transform: uppercase;
+  background-color: #06c1de;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 24px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: "Press Start 2P", cursive;
+  outline: none;
+}
+.save::after {
+  content: "";
+  position: absolute;
+  width: 165px;
+  height: 65px;
+  top: 12px;
+  left: 0;
+  background-color: #047e91;
+  border-radius: 24px;
+  z-index: -1;
+}
+.save:hover {
+  background-color: #06b6d1;
+}
+.save:active {
+  top: 10px;
+}
+.save:active::after {
+  top: 2px;
+}
 </style>
 
-// https://codepen.io/JesusTepec/pen/pjzpOE

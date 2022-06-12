@@ -1,8 +1,8 @@
 <template>
-  <header>
+  <section>
     <router-link to="/users" class="register"> Register</router-link>
     <h1 class="main-title">Welcome to PixelArt Museum</h1>
-  </header>
+  </section>
   <link
     href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css"
     rel="stylesheet"
