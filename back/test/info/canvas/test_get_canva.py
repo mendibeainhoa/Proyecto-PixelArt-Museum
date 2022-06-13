@@ -14,6 +14,7 @@ def test_should_return_all_list_of_sprites_in_front():
         name="canva-test",
         width=8,
         height=4,
+        user_id="user-ainhoa",
         pixels=[
             "yellow",
             "white",
@@ -45,6 +46,7 @@ def test_should_return_all_list_of_sprites_in_front():
         name="canva-test-2",
         width=8,
         height=4,
+        user_id="user-gabriel",
         pixels=[
             "yellow",
             "red",
@@ -82,6 +84,7 @@ def test_should_return_all_list_of_sprites_in_front():
             "name": "canva-test",
             "width": 8,
             "height": 4,
+            "user_id": "user-ainhoa",
             "pixels": [
                 "yellow",
                 "white",
@@ -113,6 +116,7 @@ def test_should_return_all_list_of_sprites_in_front():
             "name": "canva-test-2",
             "width": 8,
             "height": 4,
+            "user_id": "user-gabriel",
             "pixels": [
                 "yellow",
                 "red",

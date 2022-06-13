@@ -12,6 +12,7 @@ canva = Canva(
     name="canva-test",
     width=8,
     height=4,
+    user_id="user-ainhoa",
     pixels=[
         "yellow",
         "white",
@@ -53,6 +54,7 @@ canva_two = Canva(
     name="creep",
     width=8,
     height=4,
+    user_id="user-gabriel",
     pixels=[
         "green",
         "green",

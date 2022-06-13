@@ -16,6 +16,7 @@ def test_should_delete_canvas():
         name="canva-test",
         width=2,
         height=5,
+        user_id="user-ainhoa",
         pixels=[
             "yellow",
             "white",
@@ -34,6 +35,7 @@ def test_should_delete_canvas():
         name="canva-test-2",
         width=2,
         height=3,
+        user_id="user-gabriel",
         pixels=["yellow", "red", "red", "blue", "white", "white"],
     )
     canvas_repository.save(canva_one)
@@ -46,6 +48,7 @@ def test_should_delete_canvas():
         "name": "canva-test",
         "width": 2,
         "height": 5,
+        "user_id": "user-ainhoa",
         "pixels": [
             "yellow",
             "white",
@@ -71,6 +74,7 @@ def test_should_delete_canvas():
             "name": "canva-test-2",
             "width": 2,
             "height": 3,
+            "user_id": "user-gabriel",
             "pixels": [
                 "yellow",
                 "red",

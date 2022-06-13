@@ -14,6 +14,7 @@ def test_should_return_sprites_in_front():
         name="canva-test",
         width=8,
         height=4,
+        user_id="user-ainhoa",
         pixels=[
             "yellow",
             "white",
@@ -49,6 +50,7 @@ def test_should_return_sprites_in_front():
         "name": "canva-test",
         "width": 8,
         "height": 4,
+        "user_id": "user-ainhoa",
         "pixels": [
             "yellow",
             "white",

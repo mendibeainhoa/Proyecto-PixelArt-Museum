@@ -17,6 +17,7 @@ def test_server_should_save_sprites():
         "name": "canva-test",
         "width": 2,
         "height": 1,
+        "user_id": "user-ainhoa",
         "pixels": [
             "yellow",
             "white",
@@ -54,6 +55,7 @@ def test_server_should_save_sprites():
         "name": "canva-test",
         "width": 2,
         "height": 1,
+        "user_id": "user-ainhoa",
         "pixels": [
             "yellow",
             "white",

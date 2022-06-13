@@ -3,17 +3,13 @@ import json
 
 
 class Canva:
-    def __init__(self, id, name, width, height, pixels):
+    def __init__(self, id, name, width, height, user_id, pixels):
         self.id = id
         self.name = name
         self.width = width
         self.height = height
+        self.user_id = user_id
         self.pixels = pixels
-
-        # if pixels is not None:
-        #     self.pixels = pixels
-        # else:
-        #     self.pixels = []
 
     def to_dict(self):
         return {
@@ -21,6 +17,7 @@ class Canva:
             "name": self.name,
             "width": self.width,
             "height": self.height,
+            "user_id": self.user_id,
             "pixels": self.pixels,
         }
 
@@ -43,6 +40,7 @@ class CanvasRepository:
             "name" VARCHAR,
             "width" INTERGER,
             "height" INTERGER,
+            "user_id" VARCHAR,
             "pixels" VARCHAR)"""
         conn = self.create_conn()
         cursor = conn.cursor()
@@ -64,6 +62,7 @@ class CanvasRepository:
                 name=item["name"],
                 width=item["width"],
                 height=item["height"],
+                user_id=item["user_id"],
                 pixels=json.loads(item["pixels"]),
             )
             canvas.append(canva)
@@ -83,6 +82,7 @@ class CanvasRepository:
             name=data["name"],
             width=data["width"],
             height=data["height"],
+            user_id=data["user_id"],
             pixels=json.loads(data["pixels"]),
         )
 
@@ -90,8 +90,8 @@ class CanvasRepository:
 
     def save(self, canva):
         print(canva.to_dict())
-        sql = """INSERT OR REPLACE INTO canva(id, name, width, height, pixels) values
-        (:id, :name, :width, :height, :pixels)"""
+        sql = """INSERT OR REPLACE INTO canva(id, name, width, height, user_id, pixels) values
+        (:id, :name, :width, :height, :user_id, :pixels)"""
         conn = self.create_conn()
         cursor = conn.cursor()
         cursor.execute(
@@ -101,6 +101,7 @@ class CanvasRepository:
                 "name": canva.name,
                 "width": canva.width,
                 "height": canva.height,
+                "user_id": canva.user_id,
                 "pixels": json.dumps(canva.pixels),
             },
         )
