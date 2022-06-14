@@ -1,11 +1,16 @@
 import config from "/config.js";
 import { v4 as uuidv4 } from "uuid";
 
-function getUserId() {
+export function getUserId() {
   const userJson = localStorage.getItem("auth");
   const user = JSON.parse(userJson);
   console.log(user);
   return user.id;
+}
+export function getUserName() {
+  const userJson = localStorage.getItem("auth");
+  const user = JSON.parse(userJson);
+  return user.name;
 }
 export async function get_canva_by_id(id) {
   const settings = {

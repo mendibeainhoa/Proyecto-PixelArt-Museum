@@ -255,8 +255,7 @@ input {
   transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.name:focus,
-input:hover {
+.name:focus input:hover {
   outline: none;
   padding: 0.2rem 1rem;
   border-radius: 1rem;

@@ -3,6 +3,9 @@
     <router-link to="/edit_pixel/new"> Crear nuevo canva</router-link>
     <div>
       <button class="nes-btn" @click="$router.go(-1)">↩</button>
+      <div class="user-title">
+        <p>Welcome home {{ name }}</p>
+      </div>
       <h1 class="load-title">Tus creaciones de PixelArt</h1>
     </div>
   </section>
@@ -35,9 +38,12 @@
 <script>
 import { get_canva } from "@/services/api.js";
 import { delete_canva } from "@/services/api.js";
+import { getUserName } from "@/services/api.js";
+
 export default {
   data() {
     return {
+      name: "",
       canvas: [
         {
           name: "",
@@ -49,6 +55,7 @@ export default {
 
   mounted() {
     this.onLoadSprite();
+    this.userName();
   },
   methods: {
     async onLoadSprite() {
@@ -65,6 +72,9 @@ export default {
         console.log("Dibujo no eliminado");
       }
     },
+    async userName() {
+      this.name = await getUserName();
+    },
   },
 };
 </script>
@@ -76,6 +86,11 @@ export default {
   margin: 0;
   padding: 0;
   font-family: "Press Start 2P", cursive;
+}
+.user-title {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 3em;
 }
 .title-button {
   display: flex;
