@@ -20,13 +20,14 @@
 
 <script>
 import { login } from "@/services/auth.js";
-
+import { useStorage } from "@vueuse/core";
 export default {
   name: "Home",
   data() {
     return {
       name: "",
       password: "",
+      auth: useStorage("auth", {}),
     };
   },
   methods: {
@@ -47,6 +48,10 @@ export default {
       let statusLogin = response.status;
 
       if (statusLogin === 200) {
+        const auth = await response.json();
+        console.log("auth", auth);
+        this.auth = auth;
+
         this.$router.push("/load_canva");
       } else {
         alert("Acceso denegado");

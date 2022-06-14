@@ -117,6 +117,7 @@ export default {
         name: "",
         width: 0,
         height: 0,
+        user_id: "",
         pixels: Array(100).fill("white"),
       },
     };

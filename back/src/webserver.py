@@ -1,3 +1,4 @@
+import re
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -5,6 +6,7 @@ from flask_cors import CORS
 from src.lib.utils import object_to_json
 from src.domain.canva import Canva
 from src.domain.user import User
+import json
 
 
 def create_app(repositories):
@@ -17,19 +19,32 @@ def create_app(repositories):
 
     @app.route("/api/load_canva", methods=["GET"])
     def canvas_get():
-        all_canvas = repositories["canva"].get_all_canva()
-        return object_to_json(all_canvas)
+        user_id = request.headers.get("Authorization")
+        all_canvas_of_user = repositories["canva"].get_all_canva(user_id)
+        return object_to_json(all_canvas_of_user)
 
     @app.route("/api/canva/<id>", methods=["GET"])
     def canva_get_by_id(id):
-
+        user_id = request.headers.get("Authorization")
         canva = repositories["canva"].get_canva_by_id(id)
-        return object_to_json(canva)
+
+        if user_id == canva.user_id:
+            return object_to_json(canva), 200
+        else:
+            return "", 403
 
     @app.route("/api/canvas", methods=["POST"])
     def canva_post():
+        user_id = request.headers.get("Authorization")
         body = request.json
-        canva = Canva(**body)
+        canva = Canva(
+            id=body["id"],
+            name=body["name"],
+            width=body["width"],
+            height=body["height"],
+            user_id=user_id,
+            pixels=body["pixels"],
+        )
         repositories["canva"].save(canva)
 
         return "", 200
@@ -50,9 +65,14 @@ def create_app(repositories):
 
     @app.route("/api/load_canva/<id>", methods=["DELETE"])
     def delete_canva(id):
-        canvas = id
-        repositories["canva"].delete_canva(canvas)
-        return "", 200
+        user_id = request.headers.get("Authorization")
+        canva = repositories["canva"].get_canva_by_id(id)
+
+        if user_id == canva.user_id:
+            repositories["canva"].delete_canva(id)
+            return "", 200
+        else:
+            return "", 403
 
     @app.route("/api/users", methods=["POST"])
     def users_post():

@@ -47,11 +47,11 @@ class CanvasRepository:
         cursor.execute(sql)
         conn.commit()
 
-    def get_all_canva(self):
-        sql = """SELECT * FROM canva"""
+    def get_all_canva(self, user_id):
+        sql = """SELECT * FROM canva WHERE user_id=:user_id"""
         conn = self.create_conn()
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, {"user_id": user_id})
 
         data = cursor.fetchall()
 

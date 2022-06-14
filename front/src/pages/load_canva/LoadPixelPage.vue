@@ -1,7 +1,10 @@
 <template>
   <section>
     <router-link to="/edit_pixel/new"> Crear nuevo canva</router-link>
-    <h1 class="load-title">Tus creaciones de PixelArt</h1>
+    <div>
+      <button class="nes-btn" @click="$router.go(-1)">↩</button>
+      <h1 class="load-title">Tus creaciones de PixelArt</h1>
+    </div>
   </section>
 
   <div class="canvas-boxes">
@@ -10,7 +13,10 @@
         <router-link :to="{ path: '/edit_pixel/' + canva.id }">
           <p class="title-canva">{{ canva.name }}</p>
         </router-link>
-        <button class="delete-button" @click="onDeleteCanva(canva.id)">
+        <button
+          class="delete-button, nes-btn is-error"
+          @click="onDeleteCanva(canva.id)"
+        >
           <span> X </span>
         </button>
       </div>
@@ -80,8 +86,8 @@ export default {
 }
 
 .load-title {
-  margin: 1em;
-  font-size: 50px;
+  margin: 2em 0px 2em 0;
+  font-size: 30px;
   color: rgba(42, 121, 42, 0.637);
 }
 .title-canva {
@@ -91,7 +97,7 @@ export default {
   display: flex;
   grid-template-rows: repeat(1, 1fr);
   flex-wrap: wrap;
-  flex-direction: row;
+  justify-content: space-evenly;
 }
 .canva {
   width: 30px;
@@ -104,7 +110,6 @@ export default {
   width: 20em;
   height: auto;
   border: solid 1px black;
-  margin: 3em 1em 1em 35em;
   align-content: flex-start;
   justify-content: center;
 }

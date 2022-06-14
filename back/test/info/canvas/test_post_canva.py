@@ -45,10 +45,14 @@ def test_server_should_save_sprites():
         ],
     }
 
-    response = client.post("api/canvas", json=body)
+    response = client.post(
+        "api/canvas", json=body, headers={"Authorization": "user-ainhoa"}
+    )
     assert response.status_code == 200
 
-    response_get = client.get("api/canva/canva-1")
+    response_get = client.get(
+        "api/canva/canva-1", headers={"Authorization": "user-ainhoa"}
+    )
 
     assert response_get.json == {
         "id": "canva-1",

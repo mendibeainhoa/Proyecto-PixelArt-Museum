@@ -44,7 +44,9 @@ def test_should_return_sprites_in_front():
 
     canvas_repository.save(canva)
 
-    response = client.get("/api/canva/canva-1")
+    response = client.get(
+        "/api/canva/canva-1", headers={"Authorization": "user-ainhoa"}
+    )
     assert response.json == {
         "id": "canva-1",
         "name": "canva-test",

@@ -35,7 +35,7 @@ def test_should_delete_canvas():
         name="canva-test-2",
         width=2,
         height=3,
-        user_id="user-gabriel",
+        user_id="user-ainhoa",
         pixels=["yellow", "red", "red", "blue", "white", "white"],
     )
     canvas_repository.save(canva_one)
@@ -63,18 +63,20 @@ def test_should_delete_canvas():
         ],
     }
 
-    response_delete = client.delete("/api/load_canva/canva-1", json=body)
+    response_delete = client.delete(
+        "/api/load_canva/canva-1", json=body, headers={"Authorization": "user-ainhoa"}
+    )
     assert response_delete.status_code == 200
 
     # ASSERT (then)
-    response = client.get("/api/load_canva")
+    response = client.get("/api/load_canva", headers={"Authorization": "user-ainhoa"})
     assert response.json == [
         {
             "id": "canva-2",
             "name": "canva-test-2",
             "width": 2,
             "height": 3,
-            "user_id": "user-gabriel",
+            "user_id": "user-ainhoa",
             "pixels": [
                 "yellow",
                 "red",
